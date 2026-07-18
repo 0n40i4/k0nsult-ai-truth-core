@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#060b06">
+  <title>K0NSULT — AI Truth & Governance Portal</title>
+  <meta name="description" content="Europejski portal jawności AI Act: rankingi, bazy prawne, kampania regulatorów EU27, piaskownice, naruszenia, rejestr agentów, tłumaczenia. Claim ≤ proof.">
+  <link rel="canonical" href="https://k0nsult.cloud/ai-truth" />
+  <style>
+    :root{--bg:#060b06;--bg2:#0a0f0a;--panel:#0e160e;--border:#1a2e1a;--border2:#243c24;
+      --phosphor:#39ff14;--phosphor3:#166b0a;--amber:#ffb700;--red:#ff3333;--cyan:#00e5ff;--blue:#4488ff;
+      --text:#c8e8c8;--text2:#8ab08a;--text3:#4a6a4a;--font-mono:'JetBrains Mono','Share Tech Mono','Courier New',monospace;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-mono);line-height:1.6;font-size:15px}
+    a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline;color:var(--phosphor)}
+    header{border-bottom:1px solid var(--border);background:var(--bg2);padding:.8rem 0;position:sticky;top:0;z-index:50}
+    .hdr{max-width:1400px;margin:0 auto;padding:0 1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem}
+    .brand{color:var(--phosphor);font-weight:700;font-size:1rem}.brand span{color:var(--text3);font-weight:400}
+    .topnav{display:flex;gap:.5rem;flex-wrap:wrap}
+    .topnav a{color:var(--text2);font-size:12px;padding:.2rem .5rem;border:1px solid var(--border);border-radius:3px}
+    .topnav a:hover,.topnav a.act{border-color:var(--phosphor3);color:var(--phosphor)}
+    .layout{max-width:1400px;margin:0 auto;padding:0 1.2rem;display:grid;grid-template-columns:220px 1fr;gap:1.4rem;min-height:90vh;padding-top:1.2rem;padding-bottom:4rem}
+    @media(max-width:820px){.layout{grid-template-columns:1fr}.sidebar{display:none}}
+    /* SIDEBAR */
+    .sidebar{position:sticky;top:58px;height:calc(100vh - 70px);overflow-y:auto;padding-right:.5rem;padding-bottom:2rem}
+    .sidebar::-webkit-scrollbar{width:4px}.sidebar::-webkit-scrollbar-thumb{background:var(--border2)}
+    .sb-section{margin-bottom:1.1rem}
+    .sb-title{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);padding:.3rem 0 .2rem;border-bottom:1px solid var(--border)}
+    .sb-link{display:block;padding:.22rem .4rem;font-size:12.5px;color:var(--text2);border-radius:3px;margin:.05rem 0}
+    .sb-link:hover{background:var(--panel);color:var(--phosphor)}
+    .sb-link.new::after{content:'NEW';font-size:9px;color:var(--phosphor);margin-left:.4rem;vertical-align:middle}
+    .sb-link.hot::after{content:'●';font-size:9px;color:var(--amber);margin-left:.3rem}
+    /* MAIN */
+    .main{min-width:0}
+    .hero{background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--phosphor);border-radius:6px;padding:1.4rem 1.6rem;margin-bottom:1.4rem}
+    .hero .claim{color:var(--phosphor);font-size:1.25rem;font-weight:700;margin-bottom:.5rem}
+    .hero .sub{color:var(--text2);font-size:14px}
+    .slogans{display:flex;gap:.6rem;flex-wrap:wrap;margin:.8rem 0 0}
+    .slogan{border:1px solid var(--phosphor3);color:var(--phosphor);font-size:12px;padding:.2rem .6rem;border-radius:3px}
+    .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.6rem;margin:1rem 0}
+    .stat{background:var(--panel);border:1px solid var(--border2);border-radius:5px;padding:.7rem .8rem;text-align:center}
+    .stat .n{font-size:1.5rem;color:var(--phosphor);font-weight:700}
+    .stat .l{font-size:10px;color:var(--text3);text-transform:uppercase}
+    h2{color:var(--text);font-size:1rem;margin:1.8rem 0 .7rem;padding-bottom:.3rem;border-bottom:1px dashed var(--border2)}
+    p{margin:.5rem 0;color:var(--text2);font-size:14px}
+    /* SECTION GRID */
+    .sec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.7rem;margin:.5rem 0}
+    .sec-card{background:var(--panel);border:1px solid var(--border2);border-radius:5px;padding:.8rem .9rem;position:relative}
+    .sec-card:hover{border-color:var(--phosphor3)}
+    .sec-card .ico{font-size:1.1rem;margin-bottom:.3rem}
+    .sec-card h3{color:var(--text);font-size:.9rem;margin-bottom:.2rem}
+    .sec-card p{font-size:12px;color:var(--text3);margin:0}
+    .sec-card a.full{position:absolute;inset:0;border-radius:5px}
+    .badge{display:inline-block;font-size:10px;border-radius:2px;padding:.05rem .35rem;margin-left:.3rem;vertical-align:middle}
+    .b-live{background:rgba(57,255,20,.1);color:var(--phosphor);border:1px solid var(--phosphor3)}
+    .b-data{background:rgba(0,229,255,.07);color:var(--cyan);border:1px solid #135}
+    .b-soon{color:var(--text3);border:1px solid var(--border2)}
+    .b-new{background:rgba(255,183,0,.1);color:var(--amber);border:1px solid var(--amber)}
+    /* NEWS WIDGET */
+    .news-widget{background:var(--panel);border:1px solid var(--border2);border-radius:5px;padding:.9rem 1rem;margin:.5rem 0}
+    .nw-item{border-bottom:1px solid var(--border);padding:.45rem 0;font-size:13px}
+    .nw-item:last-child{border:0}
+    .nw-date{color:var(--text3);font-size:11px}
+    .nw-title{color:var(--text)}
+    /* CAMPAIGN */
+    .camp-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.6rem;margin:.5rem 0}
+    .camp-plane{background:var(--bg2);border:1px solid var(--border2);border-radius:4px;padding:.7rem .8rem}
+    .camp-plane .pn{color:var(--phosphor);font-size:.85rem;font-weight:700;margin-bottom:.2rem}
+    .camp-plane p{font-size:12px;color:var(--text3);margin:0}
+    .camp-plane .cnt{font-size:1.1rem;color:var(--amber);font-weight:700}
+    /* LAW DB */
+    .law-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem;margin:.5rem 0}
+    .law-card{background:var(--panel);border:1px solid var(--border2);border-radius:4px;padding:.7rem .9rem}
+    .law-card .code{color:var(--phosphor);font-weight:700;font-size:.9rem}
+    .law-card .scope{font-size:11px;color:var(--text3);margin:.2rem 0}
+    .law-card p{font-size:12px;color:var(--text2);margin:0}
+    /* EU TABLE */
+    table{width:100%;border-collapse:collapse;font-size:13px;margin:.5rem 0}
+    th,td{border:1px solid var(--border2);padding:.4rem .6rem;text-align:left;vertical-align:top}
+    th{background:var(--bg2);color:var(--text2);font-size:11px;text-transform:uppercase}
+    td a{color:var(--cyan)}
+    .flag{margin-right:.35rem}
+    /* DISCLAIMER */
+    .disclaimer{border:1px solid var(--border2);border-radius:4px;padding:.7rem 1rem;margin:1.5rem 0;font-size:12px;color:var(--text3)}
+    footer{border-top:1px solid var(--border);padding:1rem 1.2rem;margin-top:1rem;color:var(--text3);font-size:12px;max-width:1400px;margin-left:auto;margin-right:auto}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hdr">
+      <div class="brand">K0NSULT<span>&nbsp;//&nbsp;</span>AI Truth &amp; Governance Portal</div>
+      <div class="topnav">
+        <a href="/ai-truth" class="act">PL</a>
+        <a href="/ai-truth/en">EN</a>
+        <a href="/ai-truth/dashboard">Dashboard</a>
+        <a href="/ai-truth/ipIII/">ipIII — Cyber/AI Mapa</a>
+        <a href="/ai-truth/kampania">Kampania</a>
+        <a href="/ai-truth/kampania-eu">EU27 ↗</a>
+        <a href="/ai-truth/piaskownica">Piaskownica</a>
+        <a href="/ai-truth/min-cyfryzacji">MC Live</a>
+        <a href="/ai-truth/rejestr">Rejestr</a>
+        <a href="/evidence-index">Dowody</a>
+        <a href="/ai-truth/kontakt">Kontakt</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sb-section">
+        <div class="sb-title">🛡️ ipIII — System Cyber/AI</div>
+        <a class="sb-link new" href="/ai-truth/ipIII/">System mapy incydentów</a>
+        <a class="sb-link" href="/ai-truth/ipIII/banking-demo">Demo dla banków</a>
+        <a class="sb-link" href="/ai-truth/ipIII/sentinel">Sentinel — atak/obrona</a>
+        <a class="sb-link" href="/ai-truth/ipIII/playbooks">Playbooki (A–L)</a>
+        <a class="sb-link" href="/ai-truth/ipIII/compliance">Compliance NIS2/RODO/AI Act</a>
+        <a class="sb-link" href="/ai-truth/ipIII/hackaton">Hackaton PL</a>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">🎯 Kampania</div>
+        <a class="sb-link hot" href="/ai-truth/kampania">Kampania EU27</a>
+        <a class="sb-link" href="/ai-truth/kampania-eu">5 płaszczyzn</a>
+        <a class="sb-link" href="/ai-truth/lobbying">Lobbying &amp; Policy</a>
+        <a class="sb-link" href="/ai-truth/mapa-ue">Mapa UE</a>
+        <a class="sb-link" href="/ai-truth/mapa-zdarzen">Mapa zdarzeń</a>
+        <a class="sb-link" href="/ai-truth/regulatorzy-eu">Regulatorzy EU27</a>
+        <a class="sb-link" href="/ai-truth/tablica-scoringowa">Tablica scoringowa</a>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">🏛️ GOV / Państwo</div>
+        <a class="sb-link new" href="/ai-truth/min-cyfryzacji">MC Live — Ministerstwo Cyfryzacji</a>
+        <a class="sb-link" href="/ai-truth/min-cyfryzacji#cyber">Cyberbezpieczeństwo RP</a>
+        <a class="sb-link" href="/ai-truth/min-cyfryzacji#mapa-polski">Mapa Polski (stany)</a>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">📰 Informacja</div>
+        <a class="sb-link new" href="/ai-truth/news">Newsy &amp; artykuły</a>
+        <a class="sb-link" href="/ai-truth/status">Status operacyjny</a>
+        <a class="sb-link" href="/ai-truth/raport">Raport flagowy</a>
+        <a class="sb-link" href="/ai-truth/publikacje">Publikacje</a>
+        <a class="sb-link" href="/ai-truth/case-study">Case study</a>
+        <a class="sb-link" href="/ai-truth/barometr">Barometr AI Act</a>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">📊 Rankingi &amp; Dane</div>
+        <a class="sb-link" href="/ai-truth/ranking-organy">Ranking organów</a>
+        <a class="sb-link" href="/ai-truth/ranking-jst-kas">Ranking JST/KAS</a>
+        <a class="sb-link" href="/ai-truth/ranking-ue">Ranking UE</a>
+        <a class="sb-link" href="/ai-truth/indeks-gotowosci">Indeks gotowości</a>
+        <a class="sb-link" href="/ai-truth/indeks">Indeks AI Act</a>
+        <a class="sb-link" href="/ai-truth/wdrozenia">Wdrożenia AI</a>
+        <a class="sb-link" href="/ai-truth/ocena">Ocena systemów</a>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">⚖️ Naruszenia &amp; Regres</div>
+        <a class="sb-link new" href="/ai-truth/naruszenia">Baza naruszeń</a>
+        <a class="sb-link new" href="/ai-truth/regres">Regres &amp; odpowiedzialność</a>
+        <a class="sb-link" href="/ai-truth/zglos-naruszenie">Zgłoś szkodę</a>
+        <a class="sb-link" href="/ai-truth/zgodnosc-bezpieczenstwo">Zgodność</a>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">🧪 Piaskownica</div>
+        <a class="sb-link hot" href="/ai-truth/piaskownica">Piaskownica PL</a>
+        <a class="sb-link" href="/ai-truth/open-lab">Open Lab</a>
+        <a class="sb-link" href="/ai-truth/procedury">Procedury</a>
+        <a class="sb-link new" href="/ai-truth/zgloszenia">Zgłoszenia &amp; rejestr agentów</a>
+        <a class="sb-link" href="/ai-truth/skille">Skille agentów</a>
+        <a class="sb-link" href="/ai-truth/kostka">Kostka K0NSULT</a>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">📚 Baza wiedzy</div>
+        <a class="sb-link new" href="/ai-truth/baza-wiedzy">Prawo &amp; FAQ</a>
+        <a class="sb-link" href="/ai-truth/biblioteka">Biblioteka</a>
+        <a class="sb-link" href="/ai-truth/metodologia">Metodologia</a>
+        <a class="sb-link" href="/ai-truth/dokumenty-human">Dokumenty — ludzie</a>
+        <a class="sb-link" href="/ai-truth/dokumenty-agent">Dokumenty — agenci</a>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">🤝 Sieć &amp; Operatorzy</div>
+        <a class="sb-link new" href="/ai-truth/konsultacje">Konsultacje preENVOIS</a>
+        <a class="sb-link new" href="/ai-truth/operatorzy">Human Operators</a>
+        <a class="sb-link" href="/ai-truth/rejestr">Rejestr systemów</a>
+        <a class="sb-link" href="/ai-truth/zglos-system">Zgłoś system AI</a>
+        <a class="sb-link" href="/ai-truth/o-nas">O nas</a>
+        <a class="sb-link new" href="/ai-truth/kontakt">Kontakt</a>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">🌍 Wersje językowe</div>
+        <a class="sb-link" href="/ai-truth/en">EN (English)</a>
+        <a class="sb-link" href="/ai-truth/biblioteka/en">Library EN</a>
+        <a class="sb-link" href="/ai-truth/metodologia/en">Methodology EN</a>
+        <a class="sb-link" href="/ai-truth/procedury/en">Procedures EN</a>
+        <a class="sb-link" href="/ai-truth/kampania-eu">DE / FR / IT →</a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <!-- MC-1.1: Status nieoficjalny — widoczny na głównej -->
+      <div class="disclaimer" style="border-color:var(--cyan);background:rgba(0,229,255,.04);color:#8ab08a;margin-bottom:1rem;font-size:12px">
+        <b style="color:var(--cyan)">ℹ️ Status portalu:</b> AI Truth jest <b>nieoficjalną, badawczo-techniczną warstwą evidence layer i readiness</b>. Nie jest stroną urzędową, nie zastępuje właściwego organu, nie prowadzi formalnej certyfikacji ani formalnej piaskownicy regulacyjnej. Wszelkie dane mają charakter informacyjno-badawczy. <a href="/ai-truth/metodologia">→ Metodologia</a> · <a href="/legal/not-certification">→ Zastrzeżenie prawne</a>
+      </div>
+      <div class="hero">
+        <div class="claim">Nie jesteśmy przeciwko AI. Jesteśmy przeciwko AI bez odpowiedzialności.</div>
+        <div class="sub">Nieoficjalny monitoring gotowości AI Act / społeczno-badawczy dashboard evidence layer: rankingi, bazy prawne, kampania regulatorów EU27,
+          piaskownice regulacyjne, rejestr naruszeń, sieć operatorów. Claim ≤ proof.</div>
+        <div class="slogans">
+          <span class="slogan">Teraz my.</span>
+          <span class="slogan">1 ≠ 0.999</span>
+          <span class="slogan">AI silna — odpowiedzialność ludzka</span>
+          <span class="slogan">GO CONTROLLED</span>
+        </div>
+      </div>
+
+      <!-- K0-CST — nowy program (LIVE) -->
+      <section style="background:var(--panel);border:1px solid var(--border2);border-left:4px solid var(--phosphor);border-radius:6px;padding:1.2rem 1.4rem;margin-bottom:1.4rem">
+        <h2 style="margin-top:0;border:0;color:var(--phosphor)">🆕 Common Source of Truth (K0-CST) — nowy program</h2>
+        <p>Aktualny program K0NSULT: jeden system dla claimów, źródeł, dowodów, incydentów, obowiązków prawnych,
+          odpowiedzialności i działań naprawczych. 25 podstron + API. <strong>/ai-truth pozostaje warstwą źródłową/archiwum.</strong></p>
+        <p style="margin-top:.7rem">
+          <a href="/Common-Source-of-Truth/start" style="color:var(--phosphor);font-weight:700">→ Wejdź do K0-CST</a> ·
+          <a href="/Common-Source-of-Truth/report">Zgłoś incydent</a> ·
+          <a href="/Common-Source-of-Truth/regulatory-trigger-engine">Prawo i obowiązki</a> ·
+          <a href="/Common-Source-of-Truth/dashboard">Dashboard</a> ·
+          <a href="/ai-truth/mapa-portalu">Mapa portalu</a>
+        </p>
+      </section>
+
+      <!-- CEL I PODSTAWA DZIAŁAŃ -->
+      <section style="background:var(--panel);border:1px solid var(--border2);border-left:4px solid var(--cyan);border-radius:6px;padding:1.2rem 1.4rem;margin-bottom:1.4rem">
+        <h2 style="margin-top:0;border:0">🎯 Cel i podstawa działań</h2>
+        <p><strong>Nasze działania mają na celu audyt i weryfikację stosowanych systemów AI</strong> — ich zgodności
+          <strong>technologicznej</strong> oraz <strong>prawnej</strong> u odbiorców (organy administracji, JST, KAS,
+          podmioty publiczne).</p>
+        <p>Mamy świadomość, że stosowanie niektórych technologii <strong>bez podstawy prawnej</strong> może rodzić skutki
+          po stronie organu, który je wprowadził i zatwierdził — w zakresie odpowiedzialności, skali wdrożenia oraz jego
+          rzeczywistego potencjału.</p>
+        <p>Z zebranych, <strong>ogólnodostępnych</strong> informacji wynika, że w wielu przypadkach brak jest jednoznacznej
+          zgodności — zarówno <strong>prawnej</strong>, jak i <strong>technologicznej</strong> — na poziomie testów
+          i wdrożeń: rozwiązań bez pokrycia w rzeczywistych potrzebach oraz bez właściwego skalowania.</p>
+        <p>Zebrane informacje służą <strong>zdefiniowaniu warunków i obecnej skali</strong>. K0NSULT występuje jako podmiot
+          wskazujący faktyczną potrzebę rynkową i jej skalę oraz proponujący wdrożenie <strong>zgodne, prawidłowo
+          skalowane</strong> i zabezpieczające systemy oraz procesy.</p>
+        <p style="font-size:12px;color:var(--text3)">Charakter informacyjno-badawczy · zasada
+          <strong>claim ≤ proof</strong> · brak danych = GAP, nie fakt. Nie stanowi certyfikacji ani opinii jednostki
+          notyfikowanej. <a href="/ai-truth/metodologia">→ Metodologia</a> · <a href="/evidence-index">→ Dowody</a></p>
+      </section>
+
+      <!-- STATS -->
+      <div class="stats-row">
+        <div class="stat"><div class="n">45+</div><div class="l">Sekcji portalu</div></div>
+        <div class="stat"><div class="n">27</div><div class="l">Krajów UE</div></div>
+        <div class="stat"><div class="n">1500</div><div class="l">Maili kampania</div></div>
+        <div class="stat"><div class="n">3 022</div><div class="l">Agentów aktywnych</div></div>
+        <div class="stat"><div class="n">47</div><div class="l">Systemów AI tracked</div></div>
+        <div class="stat"><div class="n">16</div><div class="l">Pism inst.</div></div>
+      </div>
+
+      <!-- LAST NEWS -->
+      <h2>📰 Ostatnie newsy</h2>
+      <div class="news-widget">
+        <div class="nw-item"><span class="nw-date">2026-06-07</span> <span class="nw-title"><a href="/ai-truth/news">Kampania EU27 startuje — 5 płaszczyzn weryfikacji AI Act w 27 krajach UE</a></span></div>
+        <div class="nw-item"><span class="nw-date">2026-06-07</span> <span class="nw-title"><a href="/ai-truth/naruszenia">Baza naruszeń AI/RODO zaktualizowana — 15 incydentów EU/PL</a></span></div>
+        <div class="nw-item"><span class="nw-date">2026-06-07</span> <span class="nw-title"><a href="/ai-truth/wdrozenia">Monitor wdrożeń AI: 47 systemów w polskiej administracji — 0 w EUDB</a></span></div>
+        <div class="nw-item"><span class="nw-date">2026-05-25</span> <span class="nw-title"><a href="/ai-truth/lobbying">POST-002: Organ nadzoru AI Act PL — brak wyznaczenia do 01.08.2026</a></span></div>
+        <div class="nw-item"><span class="nw-date">2026-05-25</span> <span class="nw-title"><a href="/ai-truth/regres">Ścieżka regresu AI — 5 kroków: dokumentacja → UODO → KE → sąd → odszkodowanie</a></span></div>
+      </div>
+      <p><a href="/ai-truth/news">→ Wszystkie newsy i artykuły</a> &nbsp;|&nbsp; <a href="/ai-truth/raport">→ Raport flagowy</a></p>
+
+      <!-- KAMPANIA EU -->
+      <h2>🎯 Kampania EU27 — 5 płaszczyzn</h2>
+      <p>Kampania weryfikacyjna: <strong>1 500 maili</strong> do organów krajowych i unijnych AI Act. Każda płaszczyzna = 300 maili, osobny cel.</p>
+      <div class="camp-row">
+        <div class="camp-plane">
+          <div class="pn">PL-1 Weryfikacja</div>
+          <div class="cnt">300</div>
+          <p>Organy krajowe — czy wdrożyły AI Act bez nadzoru?</p>
+        </div>
+        <div class="camp-plane">
+          <div class="pn">PL-2 Audyt</div>
+          <div class="cnt">300</div>
+          <p>Piaskownice regulacyjne — rejestracja i zgłoszenia</p>
+        </div>
+        <div class="camp-plane">
+          <div class="pn">PL-3 Rejestracja</div>
+          <div class="cnt">300</div>
+          <p>Modele AI — procedury zgłoszenia do EUDB</p>
+        </div>
+        <div class="camp-plane">
+          <div class="pn">PL-4 Rozsyłka EU</div>
+          <div class="cnt">300</div>
+          <p>Regulatorzy EU27 — komunikacja zgodności</p>
+        </div>
+        <div class="camp-plane">
+          <div class="pn">PL-5 Skala 1M</div>
+          <div class="cnt">300</div>
+          <p>Skalowanie: agenci ochrony AI Act → 1 mln</p>
+        </div>
+      </div>
+      <p><a href="/ai-truth/kampania-eu">→ Szczegółowy plan kampanii EU27</a> &nbsp;|&nbsp; <a href="/ai-truth/kampania">→ Kampania PL</a> &nbsp;|&nbsp; <a href="/ai-truth/regulatorzy-eu">→ Kontakty regulatorów</a></p>
+
+      <!-- SEKCJE PORTALU -->
+      <h2>📂 Sekcje portalu</h2>
+      <div class="sec-grid">
+        <div class="sec-card"><div class="ico">📰</div><h3>Newsy <span class="badge b-live">LIVE</span></h3><p>Artykuły o AI Act, wdrożeniach, naruszeniach</p><a class="full" href="/ai-truth/news"></a></div>
+        <div class="sec-card"><div class="ico">⚠️</div><h3>Naruszenia <span class="badge b-live">LIVE</span></h3><p>Baza incydentów AI/RODO EU/PL</p><a class="full" href="/ai-truth/naruszenia"></a></div>
+        <div class="sec-card"><div class="ico">🏛️</div><h3>Wdrożenia AI <span class="badge b-live">LIVE</span></h3><p>Monitor systemów AI w PL admin</p><a class="full" href="/ai-truth/wdrozenia"></a></div>
+        <div class="sec-card"><div class="ico">⚖️</div><h3>Regres <span class="badge b-live">LIVE</span></h3><p>Ścieżka odpowiedzialności i odszkodowań</p><a class="full" href="/ai-truth/regres"></a></div>
+        <div class="sec-card"><div class="ico">🧪</div><h3>Piaskownica <span class="badge b-live">LIVE</span></h3><p>Regulatory sandbox PL + EU</p><a class="full" href="/ai-truth/piaskownica"></a></div>
+        <div class="sec-card"><div class="ico">🔬</div><h3>Open Lab <span class="badge b-live">LIVE</span></h3><p>Kalkulator gotowości, DPIA, Model Card</p><a class="full" href="/ai-truth/open-lab"></a></div>
+        <div class="sec-card"><div class="ico">🌍</div><h3>Mapa UE <span class="badge b-live">LIVE</span></h3><p>Gotowość AI Act w 27 krajach</p><a class="full" href="/ai-truth/mapa-ue"></a></div>
+        <div class="sec-card"><div class="ico">📊</div><h3>Ranking organów <span class="badge b-data">DANE</span></h3><p>30 ministerstw PL — score gotowości</p><a class="full" href="/ai-truth/ranking-organy"></a></div>
+        <div class="sec-card"><div class="ico">🏙️</div><h3>Ranking JST/KAS <span class="badge b-data">DANE</span></h3><p>Gminy, powiaty, urzędy skarbowe</p><a class="full" href="/ai-truth/ranking-jst-kas"></a></div>
+        <div class="sec-card"><div class="ico">🇪🇺</div><h3>Ranking UE <span class="badge b-data">DANE</span></h3><p>EU27 implementacja AI Act</p><a class="full" href="/ai-truth/ranking-ue"></a></div>
+        <div class="sec-card"><div class="ico">📋</div><h3>Rejestr systemów <span class="badge b-live">LIVE</span></h3><p>Rejestr systemów AI zgłoszonych do portalu</p><a class="full" href="/ai-truth/rejestr"></a></div>
+        <div class="sec-card"><div class="ico">🤝</div><h3>Operatorzy ludzcy <span class="badge b-new">NEW</span></h3><p>Human Operators Network</p><a class="full" href="/ai-truth/operatorzy"></a></div>
+        <div class="sec-card"><div class="ico">📣</div><h3>Lobbying &amp; Policy <span class="badge b-live">LIVE</span></h3><p>Korespondencja inst., postulaty</p><a class="full" href="/ai-truth/lobbying"></a></div>
+        <div class="sec-card"><div class="ico">🌐</div><h3>Regulatorzy EU27 <span class="badge b-new">NEW</span></h3><p>Kontakty organów AI Act EU27</p><a class="full" href="/ai-truth/regulatorzy-eu"></a></div>
+        <div class="sec-card"><div class="ico">🤖</div><h3>Konsultacje preENVOIS <span class="badge b-new">NEW</span></h3><p>10 modeli AI — stanowiska, raporty, oferta partnerska</p><a class="full" href="/ai-truth/konsultacje"></a></div>
+        <div class="sec-card"><div class="ico">📚</div><h3>Baza wiedzy <span class="badge b-new">NEW</span></h3><p>Prawo AI Act/RODO/KPA/KSC — FAQ</p><a class="full" href="/ai-truth/baza-wiedzy"></a></div>
+        <div class="sec-card"><div class="ico">📖</div><h3>Biblioteka <span class="badge b-live">LIVE</span></h3><p>Raporty PDF/XLSX — biblioteka dowodów</p><a class="full" href="/ai-truth/biblioteka"></a></div>
+        <div class="sec-card"><div class="ico">🔭</div><h3>Metodologia <span class="badge b-live">LIVE</span></h3><p>Jak weryfikujemy? Standardy dowodowe</p><a class="full" href="/ai-truth/metodologia"></a></div>
+        <div class="sec-card"><div class="ico">📝</div><h3>Procedury <span class="badge b-live">LIVE</span></h3><p>Procedury zgłoszeń, audytów, rejestracji</p><a class="full" href="/ai-truth/procedury"></a></div>
+        <div class="sec-card"><div class="ico">📑</div><h3>Zgłoszenia &amp; rejestr <span class="badge b-new">NEW</span></h3><p>Komplet zgłoszeniowy, rejestr agentów G1–G6, etapy</p><a class="full" href="/ai-truth/zgloszenia"></a></div>
+        <div class="sec-card"><div class="ico">📈</div><h3>Dashboard <span class="badge b-live">LIVE</span></h3><p>Metryki operacyjne portalu</p><a class="full" href="/ai-truth/dashboard"></a></div>
+        <div class="sec-card"><div class="ico">🎯</div><h3>Case Study <span class="badge b-live">LIVE</span></h3><p>Obszary kampanii jako case</p><a class="full" href="/ai-truth/case-study"></a></div>
+        <div class="sec-card"><div class="ico">✉️</div><h3>Zgłoś naruszenie <span class="badge b-live">LIVE</span></h3><p>Formularz zgłoszeniowy — szkoda AI</p><a class="full" href="/ai-truth/zglos-naruszenie"></a></div>
+        <div class="sec-card"><div class="ico">🖥️</div><h3>Zgłoś system AI <span class="badge b-live">LIVE</span></h3><p>Rejestracja systemu — transparentność</p><a class="full" href="/ai-truth/zglos-system"></a></div>
+        <div class="sec-card"><div class="ico">🏅</div><h3>Skille agentów <span class="badge b-data">DANE</span></h3><p>Katalog skilli AI compliance</p><a class="full" href="/ai-truth/skille"></a></div>
+        <div class="sec-card"><div class="ico">🔐</div><h3>Zgodność &amp; bezp. <span class="badge b-live">LIVE</span></h3><p>KSC, cyberbezpieczeństwo AI</p><a class="full" href="/ai-truth/zgodnosc-bezpieczenstwo"></a></div>
+        <div class="sec-card"><div class="ico">🏛️</div><h3>MC Live <span class="badge b-new">NEW</span></h3><p>Mapa Ministerstwa Cyfryzacji: departamenty, podmioty, cyber RP, mapa Polski (sandbox)</p><a class="full" href="/ai-truth/min-cyfryzacji"></a></div>
+      </div>
+
+      <!-- BAZY AKTÓW PRAWNYCH -->
+      <h2>⚖️ Bazy aktów prawnych — UE i kraje</h2>
+      <div class="law-row">
+        <div class="law-card"><div class="code">AI Act</div><div class="scope">UE · Rozp. 2024/1689</div><p>Zakazy, obowiązki, sankcje, EUDB, piaskownice</p></div>
+        <div class="law-card"><div class="code">RODO</div><div class="scope">UE · 2016/679</div><p>DPIA, art.22 automatyczne decyzje, art.35</p></div>
+        <div class="law-card"><div class="code">DSA</div><div class="scope">UE · 2022/2065</div><p>Cyfrowe usługi, algorytmy rekomendacyjne</p></div>
+        <div class="law-card"><div class="code">DORA</div><div class="scope">UE · 2022/2554</div><p>Odporność cyfrowa sektora finansowego</p></div>
+        <div class="law-card"><div class="code">NIS2</div><div class="scope">UE · 2022/2555</div><p>Cyberbezpieczeństwo sektora kluczowego</p></div>
+        <div class="law-card"><div class="code">KPA</div><div class="scope">PL · Dz.U. 1960</div><p>Decyzje administracyjne + AI, art.107</p></div>
+        <div class="law-card"><div class="code">KSC</div><div class="scope">PL · Dz.U. 2018</div><p>Krajowy system cyberbezpieczeństwa</p></div>
+        <div class="law-card"><div class="code">GDPR-DE</div><div class="scope">DE · BDSG + DSGVO</div><p>Niemcy: BDSG, nadzór: BfDI + DSBs krajowe</p></div>
+        <div class="law-card"><div class="code">GDPR-FR</div><div class="scope">FR · Loi Informatique</div><p>Francja: CNIL, AI sandbox PEREN</p></div>
+        <div class="law-card"><div class="code">GDPR-IT</div><div class="scope">IT · D.Lgs 196/2003</div><p>Włochy: Garante, AI Act sandbox AGID</p></div>
+        <div class="law-card"><div class="code">DGA</div><div class="scope">UE · 2022/868</div><p>Zarządzanie danymi, altruizm danych</p></div>
+        <div class="law-card"><div class="code">EU AI Liability</div><div class="scope">UE · projekt 2022</div><p>Dyrektywa odpowiedzialności AI — w procedurze</p></div>
+      </div>
+      <p><a href="/ai-truth/baza-wiedzy">→ Pełna baza wiedzy prawnej</a> &nbsp;|&nbsp; <a href="/ai-truth/biblioteka">→ Biblioteka dokumentów</a></p>
+
+      <!-- REGULATORZY EU27 SKRÓT -->
+      <h2>🌍 Regulatorzy AI Act EU27 — kluczowe organy</h2>
+      <table>
+        <thead><tr><th>Kraj</th><th>Organ nadzoru AI</th><th>Status wyznaczenia</th><th>Piaskownica</th></tr></thead>
+        <tbody>
+          <tr><td>🇵🇱 PL</td><td>Brak wyznaczonego (MC / UOKiK kandydaci)</td><td style="color:var(--red)">❌ Brak</td><td>BRAK</td></tr>
+          <tr><td>🇩🇪 DE</td><td>BNetzA + BfDI (shared)</td><td style="color:var(--amber)">⚠️ Częściowe</td><td>AI-Sandbox BMWi</td></tr>
+          <tr><td>🇫🇷 FR</td><td>CNIL (GPAI) + ARCOM</td><td style="color:var(--phosphor)">✅ Wyznaczony</td><td>PEREN sandbox</td></tr>
+          <tr><td>🇮🇹 IT</td><td>AgID + Garante Privacy</td><td style="color:var(--amber)">⚠️ Projekt ustawa</td><td>AgID AI sandbox</td></tr>
+          <tr><td>🇪🇸 ES</td><td>AESIA (Agencia España IA)</td><td style="color:var(--phosphor)">✅ Wyznaczony</td><td>AESIA sandbox</td></tr>
+          <tr><td>🇳🇱 NL</td><td>Autoriteit Persoonsgegevens</td><td style="color:var(--amber)">⚠️ Tymczasowe</td><td>BRAK</td></tr>
+          <tr><td>🇸🇪 SE</td><td>IMY + PTS</td><td style="color:var(--amber)">⚠️ W toku</td><td>Vinnova sandbox</td></tr>
+          <tr><td>🇦🇹 AT</td><td>DSB (Datenschutzbehörde)</td><td style="color:var(--amber)">⚠️ Projekt</td><td>BRAK</td></tr>
+          <tr><td>🇧🇪 BE</td><td>GBA/APD</td><td style="color:var(--amber)">⚠️ W toku</td><td>BRAK</td></tr>
+          <tr><td>🇪🇺 KE</td><td>AI Office (Brussels)</td><td style="color:var(--phosphor)">✅ Aktywny</td><td>GPAI sandbox KE</td></tr>
+        </tbody>
+      </table>
+      <p><a href="/ai-truth/regulatorzy-eu">→ Pełna baza: 27 krajów, kontakty, procedury, piaskownice</a></p>
+
+      <!-- SKALA AGENTÓW -->
+      <h2>🤖 Skala: droga do 1 mln agentów</h2>
+      <div class="camp-row">
+        <div class="camp-plane"><div class="pn">Faza 0</div><div class="cnt">3 022</div><p>Agenci aktywni — korpus lobbystów, GOK, fabryka</p></div>
+        <div class="camp-plane"><div class="pn">Faza 1</div><div class="cnt">10 000</div><p>Fabryka specjalistów — teatry PL/EU/GLOBAL</p></div>
+        <div class="camp-plane"><div class="pn">Faza 2</div><div class="cnt">100 000</div><p>Skalowanie przez EU27 — per-kraj korpusy</p></div>
+        <div class="camp-plane"><div class="pn">Faza 3</div><div class="cnt">1 000 000</div><p>Ochrona i wdrożenie AI Act — pełna skala</p></div>
+      </div>
+      <p><a href="/ai-truth/kampania-eu">→ Plan skalowania EU27</a> &nbsp;|&nbsp; <a href="/ai-truth/procedury">→ Procedury rejestracji</a></p>
+
+      <!-- FILARY ARCHITEKTURY (live) -->
+      <h2>🧭 Filary architektury</h2>
+      <div class="disclaimer" style="border:1px solid var(--phosphor3);background:rgba(57,255,20,.05);color:#8ab08a;margin:.4rem 0 1rem">
+        <b style="color:var(--phosphor)">Filary operacyjne portalu — tryb full-live-controlled.</b> Poniższe elementy są wdrożone i rozwijane
+        równolegle z nadzorem i kontrolą na każdym etapie. Obowiązuje zasada <b>claim ≤ proof</b>: zakres i status każdego filaru
+        jest dokumentowany dowodem (metodologia + sekcja „Dowody").
+      </div>
+      <div class="sec-grid">
+        <div class="sec-card"><div class="ico">🧩</div><h3>Wspólny rdzeń (kernel) <span class="badge b-live">LIVE</span></h3><p>Spójne, równoległe środowisko zgodności AI Act dla krajów UE — jeden rdzeń, rozwijany etapami per organ i per kraj.</p></div>
+        <div class="sec-card"><div class="ico">⚡</div><h3>Równoległe procesy agentów <span class="badge b-live">LIVE</span></h3><p>Architektura oparta o równoległych agentów: przyspieszenie wdrożeń przy jednoczesnej stabilizacji mechanizmów.</p></div>
+        <div class="sec-card"><div class="ico">🟢</div><h3>Tryb live / full-live-controlled <span class="badge b-live">LIVE</span></h3><p>Wdrożenia rozwijane równolegle z nadzorem i kontrolą na każdym etapie — dokumentacja procedur, skali i tempa.</p></div>
+        <div class="sec-card"><div class="ico">🇪🇺</div><h3>Europejska suwerenność tech <span class="badge b-live">LIVE</span></h3><p>Oparcie o modele europejskie (PLLuM, Bielik, Mistral) jako baza dedykowanych rozwiązań zgodności i bezpieczeństwa.</p></div>
+        <div class="sec-card"><div class="ico">🛡️</div><h3>Cyberochrona <span class="badge b-live">LIVE</span></h3><p>Warstwa cyberbezpieczeństwa oparta o alternatywne mechanizmy — element wyróżniający w skali UE.</p></div>
+        <div class="sec-card"><div class="ico">📨</div><h3>Proces zgłoszeniowy UE <span class="badge b-live">LIVE</span></h3><p>Zgłaszanie modeli, mechanizmów, komunikacji, tokenomii i nadzoru — działa w PL, rozszerzane na kraje UE.</p></div>
+        <div class="sec-card"><div class="ico">👥</div><h3>Korpus agentów + operatorzy <span class="badge b-data">DANE</span></h3><p>Baza ponad 52 000 wyszkolonych agentów wspierających procesy wdrożeniowe oraz szkolenia operatorów i obserwatorów.</p></div>
+        <div class="sec-card"><div class="ico">📈</div><h3>Skalowanie korpusu <span class="badge b-live">LIVE</span></h3><p>Korpus ochrony AI Act: <b>3 022 pozycje aktywne</b>; skalowanie fazami w toku (10 000 → 100 000 → 1 000 000). Zob. sekcja „Skala".</p></div>
+      </div>
+      <p><a href="/ai-truth/procedury">→ Procedury i etapy wdrożeń</a> &nbsp;|&nbsp; <a href="/ai-truth/metodologia">→ Metodologia (jak weryfikujemy)</a> &nbsp;|&nbsp; <a href="/evidence-index">→ Dowody</a></p>
+
+      <!-- FORMULARZ SZYBKI -->
+      <h2>✉️ Szybkie akcje</h2>
+      <div class="sec-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+        <div class="sec-card" style="border-color:var(--phosphor3)"><div class="ico">⚠️</div><h3>Zgłoś naruszenie AI</h3><p>Incydent, szkoda, nielegalne wdrożenie</p><a class="full" href="/ai-truth/zglos-naruszenie"></a></div>
+        <div class="sec-card" style="border-color:var(--phosphor3)"><div class="ico">🖥️</div><h3>Zgłoś system AI</h3><p>Dobrowolna rejestracja — transparentność</p><a class="full" href="/ai-truth/zglos-system"></a></div>
+        <div class="sec-card"><div class="ico">🤝</div><h3>Dołącz do sieci</h3><p>Human Operators Network — compliance officers</p><a class="full" href="/ai-truth/operatorzy"></a></div>
+        <div class="sec-card"><div class="ico">🧮</div><h3>Kalkulator gotowości</h3><p>Sprawdź gotowość AI Act swojej organizacji</p><a class="full" href="/ai-truth/open-lab"></a></div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>Zastrzeżenie:</strong> K0NSULT nie jest organem nadzoru AI Act, jednostką notyfikowaną ani podmiotem certyfikującym.
+        Portal zbiera publicznie dostępne dane zgodnie z zasadą claim ≤ proof. Brak danych = GAP, nie fakt.
+        Informacje mają charakter informacyjno-badawczy. W konkretnych sprawach konsultuj się z prawnikiem.
+        Statystyki kampanii: dane własne K0NSULT Sp. z o.o. (KRS 0001239441).
+      </div>
+
+      <div class="disclaimer" style="border:1px solid #ffb700;border-radius:4px;background:rgba(255,183,0,.05);padding:.8rem 1rem;margin:1.5rem auto;max-width:1400px;font-size:12px;color:#8ab08a">
+  <b style="color:#ffb700">Zastrzeżenie.</b> Materiał informacyjno-badawczy. Nie stanowi certyfikacji, nie jest opinią jednostki notyfikowanej ani konkluzją prawną — <i>not a certification · not a notified body · not a legal conclusion</i>. claim ≤ proof. <a href="/legal/not-certification" style="color:#00e5ff">/legal/not-certification</a>.
+</div>
+  <footer>
+        K0NSULT Sp. z o.o. · KRS 0001239441 · NIP 5253089872 · Prezes: Tomasz Obara &nbsp;|&nbsp;
+        Partner: Grass Roots Lobbing Sp. z o.o. (KRS 0000606959) &nbsp;|&nbsp;
+        <span style="color:var(--phosphor3)">AI-TRUTH-HUB · v2.0 · 2026-06-07</span> &nbsp;|&nbsp;
+        <a href="/ai-truth/en">EN</a> · <a href="/ai-truth/metodologia">Metodologia</a> · <a href="/ai-truth/kontakt">Kontakt</a>
+      </footer>
+    </main>
+  </div>
+<style>@media(max-width:600px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap}}</style>
+</body>
+</html>

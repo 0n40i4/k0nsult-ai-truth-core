@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#060b06">
+  <title>K0NSULT — Metodologia dowodowa | /ai-truth/metodologia</title>
+  <meta name="description" content="Metodologia dowodowa programu AI Truth: brak dowodu = GAP, nie fakt. Trzy statusy LIVE/DANE/WKRÓTCE, zasada claim ≤ proof oraz proces twierdzenie → źródło → status → wersjonowanie.">
+  <link rel="canonical" href="https://k0nsult.cloud/ai-truth/metodologia" />
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="K0NSULT">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:title" content="K0NSULT — Metodologia dowodowa | /ai-truth/metodologia">
+  <meta property="og:description" content="Metodologia dowodowa programu AI Truth: brak dowodu = GAP, nie fakt. Trzy statusy LIVE/DANE/WKRÓTCE, zasada claim ≤ proof oraz proces twierdzenie → źródło → status → wersjonowanie.">
+  <meta property="og:url" content="https://k0nsult.cloud/ai-truth/metodologia">
+  <meta property="og:image" content="https://k0nsult.cloud/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="K0NSULT — Metodologia dowodowa | /ai-truth/metodologia">
+  <meta name="twitter:description" content="Metodologia dowodowa programu AI Truth: brak dowodu = GAP, nie fakt. Trzy statusy LIVE/DANE/WKRÓTCE, zasada claim ≤ proof oraz proces twierdzenie → źródło → status → wersjonowanie.">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"K0NSULT — Metodologia dowodowa | /ai-truth/metodologia","description":"Metodologia dowodowa programu AI Truth: brak dowodu = GAP, nie fakt. Trzy statusy LIVE/DANE/WKRÓTCE, zasada claim ≤ proof oraz proces twierdzenie → źródło → status → wersjonowanie.","url":"https://k0nsult.cloud/ai-truth/metodologia","inLanguage":"pl","isPartOf":{"@type":"WebSite","name":"K0NSULT","url":"https://k0nsult.cloud"},"publisher":{"@type":"Organization","name":"K0NSULT Sp. z o.o.","url":"https://k0nsult.cloud","identifier":"KRS 0001239441"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://k0nsult.cloud/"},{"@type":"ListItem","position":2,"name":"ai-truth","item":"https://k0nsult.cloud/ai-truth"},{"@type":"ListItem","position":3,"name":"metodologia","item":"https://k0nsult.cloud/ai-truth/metodologia"}]}}
+  </script>
+  <style>
+    :root{--bg:#060b06;--bg2:#0a0f0a;--panel:#0e160e;--border:#1a2e1a;--border2:#243c24;
+      --phosphor:#39ff14;--phosphor3:#166b0a;--amber:#ffb700;--red:#ff3333;--cyan:#00e5ff;
+      --text:#c8e8c8;--text2:#8ab08a;--text3:#4a6a4a;--font-mono:'JetBrains Mono','Share Tech Mono','Courier New',monospace;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-mono);line-height:1.6;padding:0 0 4rem;font-size:15px}
+    a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
+    .wrap{max-width:880px;margin:0 auto;padding:0 1.2rem}
+    header{border-bottom:1px solid var(--border);background:var(--bg2);padding:1rem 0;margin-bottom:2rem;position:sticky;top:0;z-index:5}
+    header .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .brand{color:var(--phosphor);font-weight:700}.brand span{color:var(--text3);font-weight:400}
+    nav a{color:var(--text2);margin-left:1.1rem;font-size:13px}
+    .crumb{color:var(--text3);font-size:12px;margin-bottom:.8rem}
+    h1{color:var(--phosphor);font-size:1.7rem;margin-bottom:.5rem}
+    h2{color:var(--text);font-size:1.15rem;margin:2.2rem 0 .8rem;padding-bottom:.4rem;border-bottom:1px dashed var(--border2)}
+    p{margin:.6rem 0}.lede{color:var(--text2);margin:.6rem 0 1.2rem;font-size:15.5px}
+    .hero{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--phosphor);border-radius:6px;padding:1.3rem 1.4rem;margin:1.2rem 0}
+    .hero .claim{color:var(--phosphor);font-size:1.15rem;font-weight:700}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.9rem;margin:1rem 0}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:1rem 1.1rem}
+    .card h3{color:var(--phosphor);font-size:1rem;margin-bottom:.35rem}
+    .card p{color:var(--text2);font-size:13px;margin:.2rem 0}
+    .tag{display:inline-block;font-size:11px;border:1px solid var(--border2);border-radius:3px;padding:.05rem .4rem;color:var(--text3);margin-left:.4rem}
+    .tag.green{color:var(--phosphor);border-color:var(--phosphor3)}
+    .tag.amber{color:var(--amber);border-color:var(--amber)}
+    table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:13.5px}
+    th,td{border:1px solid var(--border2);padding:.5rem .65rem;text-align:left;vertical-align:top}
+    th{background:var(--bg2);color:var(--text2)}
+    ul{margin:.5rem 0 .5rem 1.3rem}li{margin:.3rem 0}
+    .status{font-size:11px;padding:.05rem .4rem;border-radius:3px}
+    .s-live{color:var(--phosphor);border:1px solid var(--phosphor3)}
+    .s-data{color:var(--cyan);border:1px solid #135}
+    .s-soon{color:var(--text3);border:1px solid var(--border2)}
+    .disclaimer{border:1px solid var(--amber);border-radius:4px;background:rgba(255,183,0,.05);padding:.9rem 1.1rem;margin:1.8rem 0;font-size:13px}
+    .disclaimer b{color:var(--amber)}
+    .principle{border:1px solid var(--border2);border-radius:4px;background:var(--bg2);padding:.8rem 1.1rem;margin:1rem 0;font-size:13.5px}
+    .principle b{color:var(--phosphor)}
+    footer{margin-top:3rem;border-top:1px solid var(--border);padding-top:1rem;color:var(--text3);font-size:12px}
+    footer .ver{color:var(--phosphor3)}
+    .steps{counter-reset:step;margin:1rem 0}
+    .step{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:6px;padding:.9rem 1.1rem 1rem 1.1rem;margin:.7rem 0;position:relative}
+    .step::before{counter-increment:step;content:counter(step);color:var(--cyan);font-weight:700;font-size:1.1rem;margin-right:.5rem}
+    .step b{color:var(--phosphor)}
+    .step p{color:var(--text2);font-size:13px;margin:.25rem 0 0}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brand">K0NSULT<span>&nbsp;//&nbsp;ai-truth/metodologia</span></div>
+      <nav><a href="/">Start</a><a href="/ai-truth/dashboard">Dashboard</a><a href="/ai-truth/piaskownica">Piaskownica</a><a href="/evidence-index">Dowody</a><a href="/ai-truth/en">EN</a></nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="crumb"><a href="/" style="color:inherit;text-decoration:none">k0nsult.cloud</a> / <a href="/ai-truth" style="color:inherit;text-decoration:none">ai-truth</a> / metodologia</div>
+    <h1>Metodologia dowodowa</h1>
+    <p class="lede">Jak powstaje każda informacja w programie AI Truth: od twierdzenia, przez źródło i status,
+      po wersjonowanie. Podstawowa zasada: brak dowodu nie jest faktem — jest luką.</p>
+
+    <div class="hero">
+      <div class="claim">Brak dowodu = GAP, nie fakt.</div>
+      <p>Nie zamieniamy braku informacji na domniemany fakt. Pozycja bez potwierdzonego źródła
+        zostaje oznaczona jako luka (GAP) i czeka na dowód, zamiast trafić do treści jako twierdzenie.</p>
+    </div>
+
+    <h2>1. Trzy statusy dowodowe</h2>
+    <p>Każda informacja w programie ma dokładnie jeden z trzech statusów:</p>
+    <div class="grid">
+      <div class="card">
+        <h3>LIVE <span class="status s-live">LIVE</span></h3>
+        <p><b>Potwierdzone.</b> Informacja oparta na zweryfikowanym dowodzie — dokumencie, odpowiedzi
+          organu, działającym źródle lub artefakcie, który można wskazać i sprawdzić.</p>
+      </div>
+      <div class="card">
+        <h3>DANE <span class="status s-data">DANE</span></h3>
+        <p><b>Oparte o zbiór.</b> Informacja pochodzi z udokumentowanego zbioru danych. Wskazujemy zbiór
+          źródłowy; wartości odzwierciedlają jego stan na dzień publikacji.</p>
+      </div>
+      <div class="card">
+        <h3>WKRÓTCE <span class="status s-soon">WKRÓTCE</span></h3>
+        <p><b>W przygotowaniu.</b> Pozycja zapowiedziana, ale jeszcze bez kompletnego dowodu lub zbioru.
+          Nie jest prezentowana jako fakt do czasu uzupełnienia.</p>
+      </div>
+    </div>
+
+    <h2>2. Zasada claim ≤ proof</h2>
+    <div class="principle">
+      <b>claim &le; proof:</b> nie twierdzimy więcej, niż możemy wykazać. Siła twierdzenia
+      nie może przekraczać siły dowodu, który za nim stoi. Jeśli dowód obejmuje wycinek,
+      twierdzenie ogranicza się do tego wycinka — nie uogólnia ponad to, co potwierdzone.
+    </div>
+
+    <h2>3. Proces dowodowy</h2>
+    <div class="steps">
+      <div class="step"><b>Twierdzenie</b>
+        <p>Formułujemy precyzyjne twierdzenie — co dokładnie ma być wykazane.</p>
+      </div>
+      <div class="step"><b>Źródło</b>
+        <p>Przypisujemy dowód lub zbiór: dokument, odpowiedź organu, API, artefakt. Brak źródła = GAP.</p>
+      </div>
+      <div class="step"><b>Status</b>
+        <p>Nadajemy status LIVE / DANE / WKRÓTCE zgodnie z siłą dowodu i zasadą claim ≤ proof.</p>
+      </div>
+      <div class="step"><b>Wersjonowanie</b>
+        <p>Pozycja otrzymuje wersję i datę. Zmiana dowodu lub stanu zbioru = nowa wersja, nie cicha edycja.</p>
+      </div>
+    </div>
+
+    <h2>4. Powiązane</h2>
+    <ul>
+      <li><a href="/research">› /research</a> — program badawczy i pełna metodyka oceny</li>
+      <li><a href="/evidence-index">› /evidence-index</a> — indeks dowodów programu</li>
+    </ul>
+
+    <div class="disclaimer">
+      <b>Zastrzeżenie.</b> Materiał ma charakter informacyjno-badawczy. Nie stanowi certyfikacji,
+      nie jest opinią jednostki notyfikowanej ani konkluzją prawną
+      (<i>not a certification · not a notified body · not a legal conclusion</i>).
+      Statusy i wersje odzwierciedlają stan wiedzy na dzień publikacji i podlegają aktualizacji.
+    </div>
+
+    <footer>
+      K0NSULT Sp. z o.o. · KRS 0001239441 · NIP 5253089872 &nbsp;|&nbsp;
+      Partner badawczy: Grass Roots Lobbing &nbsp;|&nbsp;
+      <span class="ver">ENV3-METODOLOGIA · v1.0 · 2026-06-07 · status: controlled research</span>
+    </footer>
+  </div>
+</body>
+</html>

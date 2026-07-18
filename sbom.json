@@ -1,0 +1,379 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "$profile": "cyclonedx-lite (podzbior: bez services/vulnerabilities/compositions)",
+  "serialNumber": "urn:uuid:a718bce6-0030-45ab-bae9-d2a25f181119",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-07-18T21:28:24.212Z",
+    "tools": [
+      {
+        "vendor": "K0NSULT",
+        "name": "sbom.mjs",
+        "version": "1.0.0"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "bom-ref": "k0nsult-opensource-surface",
+      "name": "K0NSULT open-source surface (ai-truth / uni0nai / ipIII)",
+      "version": "1.0.0"
+    },
+    "properties": [
+      {
+        "name": "k0nsult:root",
+        "value": "C:/Users/USER/Desktop/K0NSULT-OSS/k0nsult-ai-truth-core"
+      },
+      {
+        "name": "k0nsult:scope",
+        "value": "all files under root (recursive, excl. .git/node_modules) + node deps"
+      },
+      {
+        "name": "k0nsult:license_proposed",
+        "value": "Apache-2.0 (patrz LICENSE.proposed)"
+      },
+      {
+        "name": "k0nsult:stats",
+        "value": "{\"total\":12,\"files_html\":9,\"data_json\":0,\"code_files\":0,\"other_files\":3,\"node_libraries\":0}"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "bom-ref": "surface:LICENSE",
+      "name": "LICENSE",
+      "group": "other",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3359ea11b3bdde09d47f03740e257cdcefbb1a0161878cb792aa5863e5d83269"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "LICENSE"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "11357"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:NOTICE",
+      "name": "NOTICE",
+      "group": "other",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6f009519ee6e9e7261e09a6175c9e8f2e3b4cdfb3a5e4d35f9fcc3a12c980cbe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "NOTICE"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "657"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:README.md",
+      "name": "README.md",
+      "group": "other",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c320d2c3489413afdc9fc6909b6e3fcef15c8d57e4d5d0b96d6cd3e73c14cfc5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "README.md"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "981"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:surfaces/ai-truth-baza-wiedzy.html",
+      "name": "ai-truth-baza-wiedzy.html",
+      "group": "html",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c733ed2a7628f1aefa1cdf0b1937d0df5d9c7ddda6706eb017754c8cbc96e2fc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "surfaces/ai-truth-baza-wiedzy.html"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "12481"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:surfaces/ai-truth-claim-proof-standard.html",
+      "name": "ai-truth-claim-proof-standard.html",
+      "group": "html",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e4fbea05ea74eb0b83dcb812b019e484cefeca3bfbfd2c6a123eeaaefe013c7d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "surfaces/ai-truth-claim-proof-standard.html"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "21109"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:surfaces/ai-truth-indeks.html",
+      "name": "ai-truth-indeks.html",
+      "group": "html",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1527bdb329f23b1b7c4f77ebe7dafa9f99fafdcc312f01354a25b03e98eae1e5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "surfaces/ai-truth-indeks.html"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "27167"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:surfaces/ai-truth-metodologia-en.html",
+      "name": "ai-truth-metodologia-en.html",
+      "group": "html",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1faf7a0ffa3844ba1478034cbffe736b3d63438713ab567c3a4c2b4d9f46f86f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "surfaces/ai-truth-metodologia-en.html"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "10937"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:surfaces/ai-truth-metodologia.html",
+      "name": "ai-truth-metodologia.html",
+      "group": "html",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bd8d6010ee732699741fb6d0641e8d652e5a397aa62e298c76d6ee1d5f4c6a97"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "surfaces/ai-truth-metodologia.html"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "10631"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:surfaces/ai-truth-procedury-en.html",
+      "name": "ai-truth-procedury-en.html",
+      "group": "html",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "785ebbf5c7c49ce8afd3fd8c0bccb16a37afc6d91839822de09237d02b11fe5f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "surfaces/ai-truth-procedury-en.html"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "20393"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:surfaces/ai-truth-procedury.html",
+      "name": "ai-truth-procedury.html",
+      "group": "html",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9d6279f6c32562e15a669ba9045309bb1a7f766976e05777743e5383201536e2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "surfaces/ai-truth-procedury.html"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "20128"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:surfaces/ai-truth-slowniczek.html",
+      "name": "ai-truth-slowniczek.html",
+      "group": "html",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "33dba56693cf94a9942c99d6332abf2b36ba6f56185aed3f11edb044d0832605"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "surfaces/ai-truth-slowniczek.html"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "26950"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:surfaces/ai-truth.html",
+      "name": "ai-truth.html",
+      "group": "html",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3dcb63ce5be974cb33c67aa1038c3636fe70098581a766343fc68548ee90d4b2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "surfaces/ai-truth.html"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "37757"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    }
+  ]
+}

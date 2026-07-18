@@ -1,0 +1,12 @@
+k0nsult-ai-truth-core — K0NSULT evidence-first framework surfaces
+Copyright 2026 K0NSULT / 0n40i4
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+OPEN (Apache-2.0) — the framework/methodology surfaces in surfaces/:
+  ai-truth, methodology (PL/EN), claim-proof-standard, glossary,
+  knowledge-base, procedures (PL/EN), index.
+NOT INCLUDED: the proprietary k0nsult.cloud engine (surfaces may call /api/*,
+  the integration boundary); personal data; secrets/keys (No Password Custody).
+
+DOCTRINE: claim <= proof ("100%" = evidence coverage, not impenetrability);
+  Human Override Always; agents-not-people (zero scoring of natural persons).
