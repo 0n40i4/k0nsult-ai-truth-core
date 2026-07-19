@@ -10,7 +10,7 @@ and the class determines what evidence must accompany it.
 
 | Class | Meaning | Required evidence | Example |
 |---|---|---|---|
-| **DOWÓD** (PROOF) | Verifiable *now* by a third party | a resolvable `proof_ref` (URL, file+hash, commit, test) that anyone can re-run/inspect | "SBOM has 84 components, each SHA-256-pinned — see `sbom.json`" |
+| **DOWÓD** (PROOF) | Verifiable *now* by a third party | a resolvable `proof_ref` (URL, file+hash, commit, test) that anyone can re-run/inspect | "SBOM has 17 components, each SHA-256-pinned — see `sbom.json`" |
 | **GAP** | True intention, not yet realised — honest roadmap | a `roadmap_ref` (issue/plan) and an explicit target; **must not be phrased as done** | "Public repos are prepared locally; publication pending operator sign-off" |
 | **NARRACJA** (FRAMING) | Interpretation, opinion, positioning | none required, but **must be labelled** so it is not read as proof | "This model is the pattern the EU strategy calls for" |
 
@@ -29,8 +29,23 @@ Is the statement independently verifiable RIGHT NOW?
          └─ no  → NARRACJA   (must be explicitly labelled)
 ```
 
+## What the validator enforces (two modes)
+The reference validator `schema/validate.mjs` runs in two modes, and the SPEC deliberately does
+**not** overstate what the default does:
+
+- **default (shape check)** — enforces structure: a `DOWÓD` carries a non-empty `proof_ref`, a `GAP`
+  carries a `roadmap_ref` and future phrasing, unknown fields are rejected (parity with the schema's
+  `additionalProperties: false`). It does **not** dereference the `proof_ref` — a syntactically valid
+  but dangling reference passes shape check.
+- **`--resolve`** — additionally **dereferences** `proof_ref`s written as `file+hash`
+  (`<path>#sha256:<64hex>`): the file must exist under the claims file's directory **and** its SHA-256
+  must match, otherwise the claim FAILS. This is the mode that makes "resolvable" enforced rather than
+  narrated. References that are not `file+hash` (URL, commit, test id) are out of scope for the
+  built-in resolver and are left to the reader to re-run.
+
 ## Hard rules (enforced by `schema/evidence-claim.schema.json`)
-1. A `DOWÓD` **must** carry a non-empty `proof_ref`. (No proof → downgrade to GAP.)
+1. A `DOWÓD` **must** carry a non-empty `proof_ref` (shape check). Under `--resolve` a `file+hash`
+   `proof_ref` must additionally dereference (file present, hash matches). (No proof → downgrade to GAP.)
 2. A `NARRACJA` **must not** be presented as verified fact — it carries `class: "NARRACJA"`.
 3. A `GAP` **must** be phrased as future/roadmap and carry a `roadmap_ref`.
 4. Reclassification is one-directional under scrutiny: an unproven `DOWÓD` becomes a `GAP`,

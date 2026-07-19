@@ -1,9 +1,9 @@
 [
   {
     "id": "clm-0001",
-    "statement": "k0nsult-ai-truth-core ships a claim<=proof validator with a passing test suite.",
+    "statement": "k0nsult-ai-truth-core ships a claim<=proof validator with a passing --selftest suite.",
     "class": "DOWOD",
-    "proof_ref": "schema/validate.mjs --selftest (7/7 pass)"
+    "proof_ref": "schema/validate.mjs --selftest"
   },
   {
     "id": "clm-0002",
@@ -22,7 +22,7 @@
     "id": "clm-0004",
     "statement": "A signed evidence bundle will be produced once a signing identity is established.",
     "class": "GAP",
-    "roadmap_ref": "review/S1-TRUSTNET-RUNBOOK-PROD.md (No Password Custody)",
+    "roadmap_ref": "spec/SPEC-claim-le-proof.md#governance (No Password Custody)",
     "phrased_as_future": true
   },
   {
