@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://k0nsult.dev/schema/evidence-claim/1.0",
+  "title": "Evidence Claim (claim <= proof)",
+  "description": "A single public claim classified as DOWOD | GAP | NARRACJA. Enforces: DOWOD needs proof_ref; GAP needs roadmap_ref and future phrasing; NARRACJA must be labelled.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "statement", "class"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "statement": { "type": "string", "minLength": 1 },
+    "class": { "enum": ["DOWOD", "GAP", "NARRACJA"] },
+    "proof_ref": {
+      "type": "string",
+      "description": "Resolvable reference an independent party can re-run/inspect (URL, file+hash, commit, test id).",
+      "minLength": 1
+    },
+    "roadmap_ref": {
+      "type": "string",
+      "description": "Issue/plan reference for a GAP.",
+      "minLength": 1
+    },
+    "phrased_as_future": {
+      "type": "boolean",
+      "description": "For GAP: the statement is worded as roadmap, not as done."
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "class": { "const": "DOWOD" } } },
+      "then": {
+        "required": ["proof_ref"],
+        "description": "A DOWOD without a proof_ref is invalid — downgrade to GAP."
+      }
+    },
+    {
+      "if": { "properties": { "class": { "const": "GAP" } } },
+      "then": {
+        "required": ["roadmap_ref", "phrased_as_future"],
+        "properties": { "phrased_as_future": { "const": true } },
+        "description": "A GAP must carry a roadmap_ref and be phrased as future."
+      }
+    }
+  ]
+}

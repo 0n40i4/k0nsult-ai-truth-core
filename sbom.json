@@ -2,10 +2,10 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
   "$profile": "cyclonedx-lite (podzbior: bez services/vulnerabilities/compositions)",
-  "serialNumber": "urn:uuid:a718bce6-0030-45ab-bae9-d2a25f181119",
+  "serialNumber": "urn:uuid:06540e00-5b99-47f7-8390-83ac9b5417d7",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-07-18T21:28:24.212Z",
+    "timestamp": "2026-07-19T07:21:13.486Z",
     "tools": [
       {
         "vendor": "K0NSULT",
@@ -34,7 +34,7 @@
       },
       {
         "name": "k0nsult:stats",
-        "value": "{\"total\":12,\"files_html\":9,\"data_json\":0,\"code_files\":0,\"other_files\":3,\"node_libraries\":0}"
+        "value": "{\"total\":15,\"files_html\":9,\"data_json\":1,\"code_files\":1,\"other_files\":4,\"node_libraries\":0}"
       }
     ]
   },
@@ -116,6 +116,90 @@
         {
           "name": "k0nsult:bytes",
           "value": "981"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "surface:schema/evidence-claim.schema.json",
+      "name": "evidence-claim.schema.json",
+      "group": "data",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0b0c1bf8bf27b0f96e766f0f96ec2127a2af52c381887ea02fcdcf7e045b6c62"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "schema/evidence-claim.schema.json"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "1634"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:schema/validate.mjs",
+      "name": "validate.mjs",
+      "group": "code",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b200f94f3b02449a434e748d38d8f48beb1369590042258297779077fe09b629"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "schema/validate.mjs"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "3143"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:spec/SPEC-claim-le-proof.md",
+      "name": "SPEC-claim-le-proof.md",
+      "group": "other",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "51bf12d1b2618d8b8e037888051d351f0aa0ab870445e93ea6f8fe6cc622e56f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "spec/SPEC-claim-le-proof.md"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "2817"
         },
         {
           "name": "k0nsult:surface",
