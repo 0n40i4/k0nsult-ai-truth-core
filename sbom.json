@@ -2,10 +2,10 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
   "$profile": "cyclonedx-lite (podzbior: bez services/vulnerabilities/compositions)",
-  "serialNumber": "urn:uuid:06540e00-5b99-47f7-8390-83ac9b5417d7",
+  "serialNumber": "urn:uuid:68f9cd02-40a7-4a77-84ac-f11050104722",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-07-19T07:21:13.486Z",
+    "timestamp": "2026-07-19T08:52:06.930Z",
     "tools": [
       {
         "vendor": "K0NSULT",
@@ -34,11 +34,39 @@
       },
       {
         "name": "k0nsult:stats",
-        "value": "{\"total\":15,\"files_html\":9,\"data_json\":1,\"code_files\":1,\"other_files\":4,\"node_libraries\":0}"
+        "value": "{\"total\":17,\"files_html\":9,\"data_json\":2,\"code_files\":1,\"other_files\":5,\"node_libraries\":0}"
       }
     ]
   },
   "components": [
+    {
+      "type": "data",
+      "bom-ref": "surface:examples/claims-sample.json",
+      "name": "claims-sample.json",
+      "group": "data",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9ca6f85df50ace921337762c29dae441d4273068a058c6ac367a97e68d336bb4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "examples/claims-sample.json"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "1084"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
     {
       "type": "file",
       "bom-ref": "surface:LICENSE",
@@ -88,6 +116,34 @@
         {
           "name": "k0nsult:bytes",
           "value": "657"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:policy-lab/POLICY-LAB-KIT.md",
+      "name": "POLICY-LAB-KIT.md",
+      "group": "other",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ddedd9e597b3afc84bc1dfe18e3c7d02d24c182c83925b5918718b115c46d1bb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "policy-lab/POLICY-LAB-KIT.md"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "10038"
         },
         {
           "name": "k0nsult:surface",

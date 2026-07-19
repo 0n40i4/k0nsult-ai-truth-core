@@ -1,0 +1,33 @@
+[
+  {
+    "id": "clm-0001",
+    "statement": "k0nsult-ai-truth-core ships a claim<=proof validator with a passing test suite.",
+    "class": "DOWOD",
+    "proof_ref": "schema/validate.mjs --selftest (7/7 pass)"
+  },
+  {
+    "id": "clm-0002",
+    "statement": "k0nsult-tools ships an explicit Apache-2.0 Section 3 patent grant.",
+    "class": "DOWOD",
+    "proof_ref": "../k0nsult-tools/PATENT_GRANT.md + LICENSE"
+  },
+  {
+    "id": "clm-0003",
+    "statement": "The public repositories will be published to GitHub after operator sign-off.",
+    "class": "GAP",
+    "roadmap_ref": "governance/CONSULTATION-RESPONSE-DRAFT.md#publication-gate",
+    "phrased_as_future": true
+  },
+  {
+    "id": "clm-0004",
+    "statement": "A signed evidence bundle will be produced once a signing identity is established.",
+    "class": "GAP",
+    "roadmap_ref": "review/S1-TRUSTNET-RUNBOOK-PROD.md (No Password Custody)",
+    "phrased_as_future": true
+  },
+  {
+    "id": "clm-0005",
+    "statement": "This ecosystem is the pattern the EU Open Source Strategy calls for.",
+    "class": "NARRACJA"
+  }
+]
