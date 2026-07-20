@@ -57,6 +57,8 @@
     .b-data{background:rgba(0,229,255,.07);color:var(--cyan);border:1px solid #135}
     .b-soon{color:var(--text3);border:1px solid var(--border2)}
     .b-new{background:rgba(255,183,0,.1);color:var(--amber);border:1px solid var(--amber)}
+    .b-gap{background:rgba(255,183,0,.06);color:var(--amber);border:1px dashed var(--amber)}
+    .b-plan{color:var(--text3);border:1px dashed var(--border2)}
     /* NEWS WIDGET */
     .news-widget{background:var(--panel);border:1px solid var(--border2);border-radius:5px;padding:.9rem 1rem;margin:.5rem 0}
     .nw-item{border-bottom:1px solid var(--border);padding:.45rem 0;font-size:13px}
@@ -253,10 +255,12 @@
         <div class="stat"><div class="n">45+</div><div class="l">Sekcji portalu</div></div>
         <div class="stat"><div class="n">27</div><div class="l">Krajów UE</div></div>
         <div class="stat"><div class="n">1500</div><div class="l">Maili kampania</div></div>
-        <div class="stat"><div class="n">3 022</div><div class="l">Agentów aktywnych</div></div>
+        <div class="stat"><div class="n">3 022</div><div class="l">Agentów (cel ref.)*</div></div>
         <div class="stat"><div class="n">47</div><div class="l">Systemów AI tracked</div></div>
         <div class="stat"><div class="n">16</div><div class="l">Pism inst.</div></div>
       </div>
+      <p style="font-size:11px;color:var(--text3);margin:.2rem 0 0">* Liczba agentów to <strong>cel/scenariusz referencyjny</strong> planu skalowania (NARRACJA/roadmap),
+        nie zweryfikowany, publicznie dowiedziony stan „aktywny". Zasada claim ≤ proof: bez proof_ref liczba nie jest przedstawiana jako fakt DONE.</p>
 
       <!-- LAST NEWS -->
       <h2>📰 Ostatnie newsy</h2>
@@ -373,7 +377,7 @@
       <!-- SKALA AGENTÓW -->
       <h2>🤖 Skala: droga do 1 mln agentów</h2>
       <div class="camp-row">
-        <div class="camp-plane"><div class="pn">Faza 0</div><div class="cnt">3 022</div><p>Agenci aktywni — korpus lobbystów, GOK, fabryka</p></div>
+        <div class="camp-plane"><div class="pn">Faza 0</div><div class="cnt">3 022</div><p>Cel referencyjny (scenariusz, nie stan zweryfikowany) — korpus lobbystów, GOK, fabryka</p></div>
         <div class="camp-plane"><div class="pn">Faza 1</div><div class="cnt">10 000</div><p>Fabryka specjalistów — teatry PL/EU/GLOBAL</p></div>
         <div class="camp-plane"><div class="pn">Faza 2</div><div class="cnt">100 000</div><p>Skalowanie przez EU27 — per-kraj korpusy</p></div>
         <div class="camp-plane"><div class="pn">Faza 3</div><div class="cnt">1 000 000</div><p>Ochrona i wdrożenie AI Act — pełna skala</p></div>
@@ -383,9 +387,10 @@
       <!-- FILARY ARCHITEKTURY (live) -->
       <h2>🧭 Filary architektury</h2>
       <div class="disclaimer" style="border:1px solid var(--phosphor3);background:rgba(57,255,20,.05);color:#8ab08a;margin:.4rem 0 1rem">
-        <b style="color:var(--phosphor)">Filary operacyjne portalu — tryb full-live-controlled.</b> Poniższe elementy są wdrożone i rozwijane
-        równolegle z nadzorem i kontrolą na każdym etapie. Obowiązuje zasada <b>claim ≤ proof</b>: zakres i status każdego filaru
-        jest dokumentowany dowodem (metodologia + sekcja „Dowody").
+        <b style="color:var(--phosphor)">Filary architektury portalu.</b> Status każdego filaru jest oznaczony osobno:
+        <span class="badge b-live">LIVE</span> = zweryfikowane w tym repo, <span class="badge b-gap">GAP</span> = wymaga prywatnego runtime / niefalsyfikowalne z publicznego repo,
+        <span class="badge b-plan">ROADMAP</span> = cel/scenariusz referencyjny. Obowiązuje zasada <b>claim ≤ proof</b>: liczby bez proof_ref są oznaczane jako
+        NARRACJA/roadmap, nie jako fakt „DONE" (metodologia + sekcja „Dowody").
       </div>
       <div class="sec-grid">
         <div class="sec-card"><div class="ico">🧩</div><h3>Wspólny rdzeń (kernel) <span class="badge b-live">LIVE</span></h3><p>Spójne, równoległe środowisko zgodności AI Act dla krajów UE — jeden rdzeń, rozwijany etapami per organ i per kraj.</p></div>
@@ -393,9 +398,9 @@
         <div class="sec-card"><div class="ico">🟢</div><h3>Tryb live / full-live-controlled <span class="badge b-live">LIVE</span></h3><p>Wdrożenia rozwijane równolegle z nadzorem i kontrolą na każdym etapie — dokumentacja procedur, skali i tempa.</p></div>
         <div class="sec-card"><div class="ico">🇪🇺</div><h3>Europejska suwerenność tech <span class="badge b-live">LIVE</span></h3><p>Oparcie o modele europejskie (PLLuM, Bielik, Mistral) jako baza dedykowanych rozwiązań zgodności i bezpieczeństwa.</p></div>
         <div class="sec-card"><div class="ico">🛡️</div><h3>Cyberochrona <span class="badge b-live">LIVE</span></h3><p>Warstwa cyberbezpieczeństwa oparta o alternatywne mechanizmy — element wyróżniający w skali UE.</p></div>
-        <div class="sec-card"><div class="ico">📨</div><h3>Proces zgłoszeniowy UE <span class="badge b-live">LIVE</span></h3><p>Zgłaszanie modeli, mechanizmów, komunikacji, tokenomii i nadzoru — działa w PL, rozszerzane na kraje UE.</p></div>
-        <div class="sec-card"><div class="ico">👥</div><h3>Korpus agentów + operatorzy <span class="badge b-data">DANE</span></h3><p>Baza ponad 52 000 wyszkolonych agentów wspierających procesy wdrożeniowe oraz szkolenia operatorów i obserwatorów.</p></div>
-        <div class="sec-card"><div class="ico">📈</div><h3>Skalowanie korpusu <span class="badge b-live">LIVE</span></h3><p>Korpus ochrony AI Act: <b>3 022 pozycje aktywne</b>; skalowanie fazami w toku (10 000 → 100 000 → 1 000 000). Zob. sekcja „Skala".</p></div>
+        <div class="sec-card"><div class="ico">📨</div><h3>Proces zgłoszeniowy UE <span class="badge b-gap">GAP</span></h3><p>Zgłaszanie modeli, mechanizmów, komunikacji, tokenomii i nadzoru. <em>Wymaga prywatnego runtime — niefalsyfikowalne z tego publicznego repo; status operacyjny nie jest tu dowiedziony (NARRACJA/roadmap).</em></p></div>
+        <div class="sec-card"><div class="ico">👥</div><h3>Korpus agentów + operatorzy <span class="badge b-gap">GAP</span></h3><p>Docelowa baza szkoleniowa dla procesów wdrożeniowych oraz operatorów/obserwatorów. <em>Liczby korpusu to cel/scenariusz referencyjny (NARRACJA/roadmap), bez publicznego proof_ref — nie przedstawiane jako zweryfikowane DANE.</em></p></div>
+        <div class="sec-card"><div class="ico">📈</div><h3>Skalowanie korpusu <span class="badge b-plan">ROADMAP</span></h3><p>Korpus ochrony AI Act — <b>cel referencyjny Faza 0: 3 022</b> (scenariusz, nie stan zweryfikowany); plan skalowania fazami 10 000 → 100 000 → 1 000 000. Zob. sekcja „Skala".</p></div>
       </div>
       <p><a href="/ai-truth/procedury">→ Procedury i etapy wdrożeń</a> &nbsp;|&nbsp; <a href="/ai-truth/metodologia">→ Metodologia (jak weryfikujemy)</a> &nbsp;|&nbsp; <a href="/evidence-index">→ Dowody</a></p>
 

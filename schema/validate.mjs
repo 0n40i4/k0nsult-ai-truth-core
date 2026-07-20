@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// SPDX-License-Identifier: Apache-2.0
 // validate.mjs — validator for the claim<=proof evidence-claim contract. Zero deps (Node >=18).
 // Implements the hard rules of SPEC-claim-le-proof.md directly (no JSON-Schema engine needed):
 //   - DOWOD    requires a non-empty proof_ref
@@ -15,7 +16,7 @@
 //   node validate.mjs --selftest              # run the negative/positive test suite
 //   node validate.mjs claims.json             # SHAPE-validate an array (or single) of claims
 //   node validate.mjs --resolve claims.json   # SHAPE + dereference file+hash proofs (base = file's dir)
-import { readFileSync, existsSync, writeFileSync, unlinkSync } from 'node:fs';
+import { readFileSync, existsSync, writeFileSync, unlinkSync, mkdirSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { dirname, resolve as pathResolve, isAbsolute, relative } from 'node:path';
 
@@ -96,6 +97,21 @@ function selftest() {
   const tamperedRef = `${realName}#sha256:${wrongHash}`;
   const deadRef = `does-not-exist-${process.pid}.txt#sha256:${realHash}`;
 
+  // Isolating fixtures for the H5 containment guards (so mutation-testing actually kills a case,
+  // rather than a backstop silently saving it). A REAL file lives INSIDE a bundle subdir, and the
+  // pre-existing realAbs lives OUTSIDE it (one level up, in tmp). Both share `body` => `realHash`.
+  const bundleDir = pathResolve(tmp, `k0nsult-bundle-${process.pid}`);
+  mkdirSync(bundleDir, { recursive: true });
+  const insideName = 'inside-proof.txt';
+  const insideAbs = pathResolve(bundleDir, insideName);
+  writeFileSync(insideAbs, body);
+  // Absolute path that resolves INSIDE the bundle: isolates the isAbsolute guard alone.
+  //   guard present -> FAIL (rejected as absolute); guard removed -> resolves & matches -> PASS.
+  const absInsideRef = `${insideAbs}#sha256:${realHash}`;
+  // Relative traversal that escapes the bundle to a REAL matching file: isolates the containment guard.
+  //   guard present -> FAIL (escapes bundle); guard removed -> resolves to realAbs & matches -> PASS.
+  const traversalRealRef = `../${realName}#sha256:${realHash}`;
+
   const cases = [
     // [label, claim, expectOk, opts]
     ['DOWOD with proof passes', { id: '1', statement: 'SBOM has 17 components', class: 'DOWOD', proof_ref: 'sbom.json#sha256' }, true],
@@ -114,6 +130,21 @@ function selftest() {
     ['--resolve on tampered hash FAILS', { id: '10', statement: 'proof hash matches', class: 'DOWOD', proof_ref: tamperedRef }, false, { resolve: true, baseDir: tmp }],
     // Positive: a real file whose SHA-256 matches resolves under --resolve.
     ['--resolve on real file+hash PASSES', { id: '11', statement: 'proof file resolves', class: 'DOWOD', proof_ref: goodRef }, true, { resolve: true, baseDir: tmp }],
+    // H5 ISOLATING vectors — each points at a REAL matching file so exactly one guard stands
+    // between FAIL and PASS. Comment out that guard and the case flips to PASS (mutation-killed),
+    // proving the guard is load-bearing rather than coverage-theatre.
+    //  - absolute-inside: only the isAbsolute guard (line 47) rejects it; removed => resolves inside => PASS.
+    ['--resolve on absolute path (inside bundle) FAILS', { id: '12', statement: 'proof_ref given as absolute path', class: 'DOWOD', proof_ref: absInsideRef }, false, { resolve: true, baseDir: bundleDir }],
+    //  - traversal-real: only the containment guard (lines 51-53) rejects it; removed => resolves to the
+    //    real out-of-bundle file whose hash matches => PASS (arbitrary host read).
+    ['--resolve on path-traversal escaping bundle FAILS', { id: '13', statement: 'proof_ref escapes the bundle dir', class: 'DOWOD', proof_ref: traversalRealRef }, false, { resolve: true, baseDir: bundleDir }],
+    // Defense-in-depth (literal hostile inputs) — real-world traversal / absolute host paths must FAIL too.
+    ['--resolve on ../../../etc/hostname FAILS', { id: '14', statement: 'reads outside the bundle', class: 'DOWOD', proof_ref: `../../../etc/hostname#sha256:${wrongHash}` }, false, { resolve: true, baseDir: bundleDir }],
+    ['--resolve on /etc/passwd FAILS', { id: '15', statement: 'reads an absolute host path', class: 'DOWOD', proof_ref: `/etc/passwd#sha256:${wrongHash}` }, false, { resolve: true, baseDir: bundleDir }],
+    // H6 ISOLATING vector — a `#sha256:` marker with a non-64-hex hash is malformed and must FAIL.
+    // Remove the SHA_MARKER_RE guard (line 41) and this flips to PASS (ref silently skipped as
+    // "not a file+hash"), proving that guard is load-bearing too.
+    ['--resolve on malformed sha marker FAILS', { id: '16', statement: 'proof hash is malformed', class: 'DOWOD', proof_ref: 'sbom.json#sha256:deadbeef' }, false, { resolve: true, baseDir: bundleDir }],
   ];
   let pass = 0;
   for (const [label, claim, expectOk, opts] of cases) {
@@ -123,6 +154,7 @@ function selftest() {
     if (good) pass++;
   }
   try { unlinkSync(realAbs); } catch { /* best effort cleanup */ }
+  try { rmSync(bundleDir, { recursive: true, force: true }); } catch { /* best effort cleanup */ }
   console.log(`\n${pass}/${cases.length} tests passed`);
   process.exit(pass === cases.length ? 0 : 1);
 }
