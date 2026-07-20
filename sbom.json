@@ -2,10 +2,10 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
   "$profile": "cyclonedx-lite (podzbior: bez services/vulnerabilities/compositions)",
-  "serialNumber": "urn:uuid:63d29c4d-d72f-4403-af33-e9613043e582",
+  "serialNumber": "urn:uuid:1a6349f0-7610-4237-be17-55c0a75b46e3",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-07-20T13:35:54.704Z",
+    "timestamp": "2026-07-20T15:13:53.316Z",
     "tools": [
       {
         "vendor": "K0NSULT",
@@ -45,7 +45,7 @@
       },
       {
         "name": "k0nsult:stats",
-        "value": "{\"total\":18,\"files_html\":9,\"data_json\":2,\"code_files\":1,\"other_files\":6,\"node_libraries\":0}"
+        "value": "{\"total\":19,\"files_html\":9,\"data_json\":2,\"code_files\":1,\"other_files\":7,\"node_libraries\":0}"
       }
     ]
   },
@@ -156,7 +156,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "129fe7da299b7553f4045bcf8ad2222b4dbd426fb21316fb6689508f98e4620e"
+          "content": "e6b90236ad695b60cf3acf4deb8f85d8e70e6eb0ae0e2bf329ceaa8abb74892a"
         }
       ],
       "properties": [
@@ -166,7 +166,7 @@
         },
         {
           "name": "k0nsult:bytes",
-          "value": "692"
+          "value": "933"
         },
         {
           "name": "k0nsult:eol",
@@ -295,6 +295,38 @@
         {
           "name": "k0nsult:bytes",
           "value": "11692"
+        },
+        {
+          "name": "k0nsult:eol",
+          "value": "lf-normalized"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:SECURITY.md",
+      "name": "SECURITY.md",
+      "group": "other",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d5d7b069c7509951019b1f0fe0a29e58358627ae787daa24c5d13e9a4af0cc17"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "SECURITY.md"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "627"
         },
         {
           "name": "k0nsult:eol",
