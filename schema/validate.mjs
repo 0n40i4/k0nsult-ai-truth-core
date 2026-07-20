@@ -17,12 +17,15 @@
 //   node validate.mjs --resolve claims.json   # SHAPE + dereference file+hash proofs (base = file's dir)
 import { readFileSync, existsSync, writeFileSync, unlinkSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { dirname, resolve as pathResolve, isAbsolute } from 'node:path';
+import { dirname, resolve as pathResolve, isAbsolute, relative } from 'node:path';
 
 const CLASSES = ['DOWOD', 'GAP', 'NARRACJA'];
 const KNOWN_KEYS = new Set(['id', 'statement', 'class', 'proof_ref', 'roadmap_ref', 'phrased_as_future']);
 // file+hash proof_ref form: <path>#sha256:<64 hex>
 const FILE_HASH_RE = /^(.+)#sha256:([0-9a-fA-F]{64})$/;
+// H6: any sha256 marker at all — if present but NOT a valid 64-hex file+hash, the ref is
+// malformed and must FAIL (never silently pass as "not a file+hash ref").
+const SHA_MARKER_RE = /#sha256:/i;
 
 function sha256File(absPath) {
   return createHash('sha256').update(readFileSync(absPath)).digest('hex');
@@ -30,10 +33,23 @@ function sha256File(absPath) {
 
 // Dereference a DOWOD file+hash proof_ref against baseDir. Returns error string or null.
 export function resolveProofRef(proofRef, baseDir) {
-  const m = FILE_HASH_RE.exec(proofRef || '');
-  if (!m) return null; // not a file+hash ref (URL/commit/test id) — nothing to dereference here
+  const ref = proofRef || '';
+  const m = FILE_HASH_RE.exec(ref);
+  if (!m) {
+    // H6: a sha256 marker that is NOT a valid 64-hex file+hash is malformed => FAIL.
+    if (SHA_MARKER_RE.test(ref)) return `proof_ref has a malformed sha256 hash (must be 64 hex): ${ref}`;
+    return null; // genuinely not a file+hash ref (URL/commit/test id) — nothing to dereference
+  }
   const [, rel, wantHex] = m;
-  const abs = isAbsolute(rel) ? rel : pathResolve(baseDir || '.', rel);
+  // H5: containment — the proof file must live INSIDE the claims file's directory.
+  // Reject absolute paths and any traversal that escapes baseDir (no arbitrary host reads).
+  if (isAbsolute(rel)) return `proof_ref must be repo-relative, not absolute (${rel})`;
+  const base = pathResolve(baseDir || '.');
+  const abs = pathResolve(base, rel);
+  const inside = relative(base, abs);
+  if (inside === '' || inside.startsWith('..') || isAbsolute(inside)) {
+    return `proof_ref escapes the bundle directory (${rel})`;
+  }
   if (!existsSync(abs)) return `proof_ref does not resolve: file not found (${rel})`;
   const gotHex = sha256File(abs).toLowerCase();
   if (gotHex !== wantHex.toLowerCase()) {
