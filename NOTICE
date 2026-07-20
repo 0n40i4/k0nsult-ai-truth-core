@@ -7,6 +7,9 @@ OPEN (Apache-2.0) — the framework/methodology surfaces in surfaces/:
   knowledge-base, procedures (PL/EN), index.
 NOT INCLUDED: the proprietary k0nsult.cloud engine (surfaces may call /api/*,
   the integration boundary); personal data; secrets/keys (No Password Custody).
+ALSO NOT INCLUDED: the ipIII evidence-attestation module — a COMMERCIAL product
+  currently for sale; NOT open-sourced and NOT covered by the Apache-2.0 grant here
+  (open-source only conditionally, if unsold — operator Human Override).
 
 DOCTRINE: claim <= proof ("100%" = evidence coverage, not impenetrability);
   Human Override Always; agents-not-people (zero scoring of natural persons).
