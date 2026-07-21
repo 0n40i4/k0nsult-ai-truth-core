@@ -2,10 +2,10 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
   "$profile": "cyclonedx-lite (podzbior: bez services/vulnerabilities/compositions)",
-  "serialNumber": "urn:uuid:263c4b88-f4c0-4836-903e-16799b329472",
+  "serialNumber": "urn:uuid:064b3129-8d6c-4df1-9128-d9ba6bf80f9e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-07-20T16:49:34.601Z",
+    "timestamp": "2026-07-21T16:38:41.880Z",
     "tools": [
       {
         "vendor": "K0NSULT",
@@ -45,7 +45,7 @@
       },
       {
         "name": "k0nsult:stats",
-        "value": "{\"total\":19,\"files_html\":9,\"data_json\":2,\"code_files\":1,\"other_files\":7,\"node_libraries\":0}"
+        "value": "{\"total\":21,\"files_html\":9,\"data_json\":2,\"code_files\":1,\"other_files\":9,\"node_libraries\":0}"
       }
     ]
   },
@@ -83,6 +83,38 @@
       ]
     },
     {
+      "type": "file",
+      "bom-ref": "surface:.github/workflows/verify.yml",
+      "name": "verify.yml",
+      "group": "other",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8406b6124728e2d134271756c519ac50ad0f0a76d30bee9960782cb47cc98046"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": ".github/workflows/verify.yml"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "1546"
+        },
+        {
+          "name": "k0nsult:eol",
+          "value": "lf-normalized"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
       "type": "data",
       "bom-ref": "surface:examples/claims-sample.json",
       "name": "claims-sample.json",
@@ -103,6 +135,38 @@
         {
           "name": "k0nsult:bytes",
           "value": "1083"
+        },
+        {
+          "name": "k0nsult:eol",
+          "value": "lf-normalized"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:KNOWN-LIMITATIONS.md",
+      "name": "KNOWN-LIMITATIONS.md",
+      "group": "other",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7854546f778c2b2a2c92253fefe13de9809a3aeb942538359df38c81257d93da"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "KNOWN-LIMITATIONS.md"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "1631"
         },
         {
           "name": "k0nsult:eol",
