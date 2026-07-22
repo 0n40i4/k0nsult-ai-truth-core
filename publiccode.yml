@@ -3,7 +3,7 @@
 publiccodeYmlVersion: '0.4'
 name: 'k0nsult-ai-truth-core'
 url: 'https://github.com/0n40i4/k0nsult-ai-truth-core'
-releaseDate: '2026-07-21'
+releaseDate: '2026-07-22'
 softwareVersion: '1.0.0'
 developmentStatus: 'development'
 softwareType: 'standalone/other'
@@ -37,14 +37,14 @@ x-k0nsult:
   evidence_reason: 'manifest hash + CycloneDX-1.5 SBOM + Apache-2.0 verified'
   manifest:
     path: 'sbom.json'
-    hash: 'sha256:70ebb84111c7fd9e32eec18fa495850f18501da4bc6724709e21b2e0239938b2'
+    hash: 'sha256:a57f126b1d57cb28f4640ef4f40032abfc24de42b71875c2322acbcb3c57b0b9'
     hash_alg: 'sha256'
   sbom:
     format: 'CycloneDX-1.5'
     path: 'sbom.json'
     url: 'https://github.com/0n40i4/k0nsult-ai-truth-core/blob/master/sbom.json'
-    hash: 'sha256:9dea2c7ef89c166b912f2bdd9e825375fb4b8a4a943c2cfec08a81799ba2adad'
+    hash: 'sha256:87f15dc07addf2c09cff8d6f8a183d0f7682ecb21ef33aa7b4691e3c3b69bcbf'
   provenance_chain:
-    - manifest_hash: 'sha256:70ebb84111c7fd9e32eec18fa495850f18501da4bc6724709e21b2e0239938b2'
-      recorded_at: '2026-07-21T16:38:41.880Z'
+    - manifest_hash: 'sha256:a57f126b1d57cb28f4640ef4f40032abfc24de42b71875c2322acbcb3c57b0b9'
+      recorded_at: '2026-07-22T01:49:39.865Z'
       prev: null
