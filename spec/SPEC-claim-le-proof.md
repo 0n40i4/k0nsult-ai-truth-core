@@ -56,6 +56,14 @@ Public procurement and OSMI eligibility should reward **re-derivable** evidence 
 third party can recompute), not self-declared PDFs or vanity metrics. `claim ≤ proof` is
 the discipline that makes "verifiable open source" testable rather than narrated.
 
+## Cross-referencing a repo's status
+A claim may optionally carry `repo_status_ref` (schema field, added OSS-0-05), pointing at
+the `x-k0nsult.status` of a whole repository (see `k0nsult-eu-shield/osor/PUBLICCODE-GENERATOR-SPEC.md`
+SS4.1.1 — the 12-value exposure/proof-level enum, distinct from `publiccode.yml`'s own
+`developmentStatus`). This lets a `CLAIMS.md` entry lean on a repo-level status declaration
+instead of re-stating it. `repo_status_ref` is additive only: it never substitutes for the
+`proof_ref`/`roadmap_ref` a claim's own `class` already requires.
+
 ## Governance
 Irreversible acts (publication, external submission, signing) are **human-gated** — the
 classifier counts and labels; it never authorises the act. Signing needs an operator key

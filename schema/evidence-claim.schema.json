@@ -23,6 +23,11 @@
     "phrased_as_future": {
       "type": "boolean",
       "description": "For GAP: the statement is worded as roadmap, not as done."
+    },
+    "repo_status_ref": {
+      "type": "string",
+      "description": "Optional. Points a single claim at the x-k0nsult.status of a whole repo (see k0nsult-eu-shield/osor/PUBLICCODE-GENERATOR-SPEC.md SS4.1.1 and k0nsult-tools/schema/x-k0nsult.schema.json), so a claim can lean on a repo-level status declaration instead of duplicating its semantics inline. Recommended shape: '<repo-name>#x-k0nsult.status' (e.g. 'k0nsult-chain#x-k0nsult.status'). This field does NOT substitute for proof_ref/roadmap_ref — it is an additional cross-reference, never a replacement for the class-specific evidence a claim already requires.",
+      "minLength": 1
     }
   },
   "allOf": [
