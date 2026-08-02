@@ -28,6 +28,11 @@
       "type": "string",
       "description": "Optional. Points a single claim at the x-k0nsult.status of a whole repo (see k0nsult-eu-shield/osor/PUBLICCODE-GENERATOR-SPEC.md SS4.1.1 and k0nsult-tools/schema/x-k0nsult.schema.json), so a claim can lean on a repo-level status declaration instead of duplicating its semantics inline. Recommended shape: '<repo-name>#x-k0nsult.status' (e.g. 'k0nsult-chain#x-k0nsult.status'). This field does NOT substitute for proof_ref/roadmap_ref — it is an additional cross-reference, never a replacement for the class-specific evidence a claim already requires.",
       "minLength": 1
+    },
+    "data_class": {
+      "type": "string",
+      "description": "Optional, free-text. Marks the PROVENANCE of the claim's subject matter itself — is the statement about a real artefact, or about a fictional/simulated one (mirrors the 'DEMO_SIMULATION' status value from K0NSULT_AUDYT_EKOSYSTEMU_2026-07-31.md SS9, and the data_class:'synthetic' field convention used in k0nsult-kontrola's run schema). Added so this marker travels WITH the data (this JSON file), not only with surrounding documentation (same principle stated in k0nsult-kontrola/README.md:55-56: 'the disclaimer travels with the data, not with the web page'). IMPORTANT: this field is about whether the SUBJECT MATTER is real or fictional, not about whether the claim entry is 'example data' in the sense of a fixture. A claim can correctly be phrased_as_future example data structurally while its data_class is a genuine, real, non-fictional statement (e.g. 'this repo's own --selftest passes' is true, not synthetic, even when used as a worked example of the file format).",
+      "minLength": 1
     }
   },
   "allOf": [

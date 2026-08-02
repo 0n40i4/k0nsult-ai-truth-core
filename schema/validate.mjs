@@ -21,7 +21,7 @@ import { createHash } from 'node:crypto';
 import { dirname, resolve as pathResolve, isAbsolute, relative } from 'node:path';
 
 const CLASSES = ['DOWOD', 'GAP', 'NARRACJA'];
-const KNOWN_KEYS = new Set(['id', 'statement', 'class', 'proof_ref', 'roadmap_ref', 'phrased_as_future', 'repo_status_ref']);
+const KNOWN_KEYS = new Set(['id', 'statement', 'class', 'proof_ref', 'roadmap_ref', 'phrased_as_future', 'repo_status_ref', 'data_class']);
 // file+hash proof_ref form: <path>#sha256:<64 hex>
 const FILE_HASH_RE = /^(.+)#sha256:([0-9a-fA-F]{64})$/;
 // H6: any sha256 marker at all — if present but NOT a valid 64-hex file+hash, the ref is
@@ -130,6 +130,11 @@ function selftest() {
     // substitute for the class-specific evidence a claim still requires.
     ['repo_status_ref is a known optional field, DOWOD still needs proof_ref', { id: '8b', statement: 'chain repo is GATED', class: 'DOWOD', proof_ref: 'k0nsult-chain/publiccode.yml#x-k0nsult.status', repo_status_ref: 'k0nsult-chain#x-k0nsult.status' }, true],
     ['repo_status_ref alone does not satisfy DOWOD (still needs proof_ref)', { id: '8c', statement: 'chain repo is GATED', class: 'DOWOD', repo_status_ref: 'k0nsult-chain#x-k0nsult.status' }, false],
+    // OSS-3-04 — data_class is a known, optional field (marks whether the claim's
+    // SUBJECT MATTER is real or fictional/simulated, travelling with the data
+    // itself rather than only with surrounding docs). Known field => must not
+    // trip additionalProperties parity.
+    ['data_class is a known optional field, DOWOD still needs proof_ref', { id: '8d', statement: 'this repo passes --selftest', class: 'DOWOD', proof_ref: 'schema/validate.mjs --selftest', data_class: 'real (not synthetic) — verified fact about this repo' }, true],
     // F8 — the judge's exploit: a DOWOD whose file+hash proof_ref points at a NON-EXISTENT file
     // passed the old shape-only check ("resolvable" was narrated, not enforced). With --resolve it FAILS.
     ['--resolve on dead file+hash FAILS', { id: '9', statement: 'proof file exists', class: 'DOWOD', proof_ref: deadRef }, false, { resolve: true, baseDir: tmp }],

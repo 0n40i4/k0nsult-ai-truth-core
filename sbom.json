@@ -2,10 +2,10 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
   "$profile": "cyclonedx-lite (podzbior: bez services/vulnerabilities/compositions)",
-  "serialNumber": "urn:uuid:064b3129-8d6c-4df1-9128-d9ba6bf80f9e",
+  "serialNumber": "urn:uuid:7e8a0dc4-71e7-4e7d-be99-77ad66e38a20",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-07-21T16:38:41.880Z",
+    "timestamp": "2026-08-02T18:44:00.426Z",
     "tools": [
       {
         "vendor": "K0NSULT",
@@ -45,7 +45,7 @@
       },
       {
         "name": "k0nsult:stats",
-        "value": "{\"total\":21,\"files_html\":9,\"data_json\":2,\"code_files\":1,\"other_files\":9,\"node_libraries\":0}"
+        "value": "{\"total\":22,\"files_html\":9,\"data_json\":2,\"code_files\":1,\"other_files\":10,\"node_libraries\":0}"
       }
     ]
   },
@@ -115,6 +115,38 @@
       ]
     },
     {
+      "type": "file",
+      "bom-ref": "surface:CLAIMS.md",
+      "name": "CLAIMS.md",
+      "group": "other",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b74cdb44408543dbbb74ca660e8873eebedadbfdee093f8bb4c8c2975e0b51db"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": "CLAIMS.md"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "3237"
+        },
+        {
+          "name": "k0nsult:eol",
+          "value": "lf-normalized"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
       "type": "data",
       "bom-ref": "surface:examples/claims-sample.json",
       "name": "claims-sample.json",
@@ -124,7 +156,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0cddfaf6cc08c7242b3c97b48b49acba00cb2547d03e363a5b86a9d651977897"
+          "content": "905c75ab6aba01e834ef3c707afcd2e90de6a9f810342289273332cb91370087"
         }
       ],
       "properties": [
@@ -134,7 +166,7 @@
         },
         {
           "name": "k0nsult:bytes",
-          "value": "1083"
+          "value": "1847"
         },
         {
           "name": "k0nsult:eol",
@@ -316,7 +348,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0b0c1bf8bf27b0f96e766f0f96ec2127a2af52c381887ea02fcdcf7e045b6c62"
+          "content": "d0ffc665790f36b36b9935fc71c26a2d9a9e166ea9543d049715689c3f31cc77"
         }
       ],
       "properties": [
@@ -326,7 +358,7 @@
         },
         {
           "name": "k0nsult:bytes",
-          "value": "1634"
+          "value": "3363"
         },
         {
           "name": "k0nsult:eol",
@@ -348,7 +380,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f25038623b3fbafe65f125d9bb1a1ba44dc079e45f1b703666f6f0caa2b846d6"
+          "content": "57d1e3b0138a01918157e39982aeb082abbe1f255a2cb0f9e2f56dc90185cf61"
         }
       ],
       "properties": [
@@ -358,7 +390,7 @@
         },
         {
           "name": "k0nsult:bytes",
-          "value": "11692"
+          "value": "13038"
         },
         {
           "name": "k0nsult:eol",
@@ -412,7 +444,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c156478f027da0e982614fd5938c9a1e6334d0ca9ccbbfc25620930e90760f5d"
+          "content": "bb3ca84bbb900030c0e5f5e9d4c5405441929cc8893c6e19c35a8558b85c206c"
         }
       ],
       "properties": [
@@ -422,7 +454,7 @@
         },
         {
           "name": "k0nsult:bytes",
-          "value": "3922"
+          "value": "4493"
         },
         {
           "name": "k0nsult:eol",
