@@ -2,10 +2,10 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
   "$profile": "cyclonedx-lite (podzbior: bez services/vulnerabilities/compositions)",
-  "serialNumber": "urn:uuid:7e8a0dc4-71e7-4e7d-be99-77ad66e38a20",
+  "serialNumber": "urn:uuid:1f219b90-4ed7-4cdb-ae1e-c68dc17a428b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-02T18:44:00.426Z",
+    "timestamp": "2026-08-16T00:17:40.271Z",
     "tools": [
       {
         "vendor": "K0NSULT",
@@ -33,7 +33,7 @@
       },
       {
         "name": "k0nsult:scope",
-        "value": "all files under root (recursive, excl. .git/node_modules) + node deps"
+        "value": "files under root (recursive), excl. .git/node_modules and generator meta-files (publiccode.yml, index.json, *sbom.json — anti-cycle); + node deps"
       },
       {
         "name": "k0nsult:hash_basis",
@@ -636,7 +636,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "12bf8fae8fa35ade619772fe1fc510e55bf591235be6f820e2c2fac17adbaea2"
+          "content": "56329244c74c48c3f0b52250d03d351444772da2ced8dcc5827ecefe801ca02d"
         }
       ],
       "properties": [
@@ -646,7 +646,7 @@
         },
         {
           "name": "k0nsult:bytes",
-          "value": "20119"
+          "value": "20276"
         },
         {
           "name": "k0nsult:eol",
@@ -668,7 +668,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ce1a51e9d02f4d161b0a995c633a26e484f894ae12354746a0321bd9d4ed9335"
+          "content": "a91bdcfd728ab6f49e78de4d44b31039ce9430b5c60c13288e8b3f1dc96e0d2a"
         }
       ],
       "properties": [
@@ -678,7 +678,7 @@
         },
         {
           "name": "k0nsult:bytes",
-          "value": "19854"
+          "value": "20030"
         },
         {
           "name": "k0nsult:eol",
