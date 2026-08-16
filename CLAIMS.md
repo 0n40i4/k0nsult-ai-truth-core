@@ -21,3 +21,5 @@ Generated from [`k0nsult-tools/docs/CLAIMS-TEMPLATE.md`](https://github.com/0n40
 | id | statement | class | proof_ref / roadmap_ref | repo_status_ref | verified_at |
 |---|---|---|---|---|---|
 | `clm-00NN` | *(exact claim text)* | *(DOWOD\|GAP\|NARRACJA)* | *(ref, or "—" if NARRACJA)* | *(optional, or "—")* | *(YYYY-MM-DD)* |
+
+| clm-gap-publiccode | GAP | `publiccode.yml` (x-k0nsult.manifest.hash / sbom.hash) niezgodny z realnym `sbom.json` po regeneracji w tym PR — potwierdzone niezależnie sha256sum (2x) i Get-FileHash. `gen-publiccode.mjs` do przeliczenia nie istnieje w żadnym dostępnym repo. Ten sam wzorzec potwierdzony w 7/7 PR-ów regenerujących SBOM w tej sesji — luka architektoniczna, nie błąd pojedynczego PR-a. | recenzja, 2026-08-16 |
