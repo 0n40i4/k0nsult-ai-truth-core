@@ -2,10 +2,10 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
   "$profile": "cyclonedx-lite (podzbior: bez services/vulnerabilities/compositions)",
-  "serialNumber": "urn:uuid:b9745adb-46ad-464c-b8a5-809d67dc191d",
+  "serialNumber": "urn:uuid:72c5e4cb-f065-4a67-85e6-e750e8b0a42f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-07-22T13:44:29.804Z",
+    "timestamp": "2026-08-16T00:20:36.194Z",
     "tools": [
       {
         "vendor": "K0NSULT",
@@ -45,7 +45,7 @@
       },
       {
         "name": "k0nsult:stats",
-        "value": "{\"total\":21,\"files_html\":9,\"data_json\":2,\"code_files\":1,\"other_files\":9,\"node_libraries\":0}"
+        "value": "{\"total\":22,\"files_html\":9,\"data_json\":2,\"code_files\":1,\"other_files\":10,\"node_libraries\":0}"
       }
     ]
   },
@@ -71,6 +71,38 @@
         {
           "name": "k0nsult:bytes",
           "value": "127"
+        },
+        {
+          "name": "k0nsult:eol",
+          "value": "lf-normalized"
+        },
+        {
+          "name": "k0nsult:surface",
+          "value": "open-source"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "surface:.githooks/pre-commit",
+      "name": "pre-commit",
+      "group": "other",
+      "version": "1.0.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "976d5835f651e3c94b8a495908457f1632136d1358bc719aed914399a8ac0c9c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "k0nsult:path",
+          "value": ".githooks/pre-commit"
+        },
+        {
+          "name": "k0nsult:bytes",
+          "value": "1560"
         },
         {
           "name": "k0nsult:eol",
@@ -284,7 +316,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c320d2c3489413afdc9fc6909b6e3fcef15c8d57e4d5d0b96d6cd3e73c14cfc5"
+          "content": "273e240d50ce2234a4d1b1622532e3502fff8eb7254b9854cc22e8f6951d6bd7"
         }
       ],
       "properties": [
@@ -294,7 +326,7 @@
         },
         {
           "name": "k0nsult:bytes",
-          "value": "981"
+          "value": "1236"
         },
         {
           "name": "k0nsult:eol",
