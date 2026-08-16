@@ -1,0 +1,40 @@
+#!/usr/bin/env sh
+# .githooks/pre-commit
+#
+# Auto-regeneruje sbom.json PRZED kazdym commitem, zeby CI (.github/workflows/verify.yml,
+# krok "SBOM must be re-derivable") nigdy nie failowal na stary/zapomniany SBOM.
+# To byl juz 5. raz w ekosystemie K0NSULT ze zapomniano zregenerowac SBOM po zmianie
+# tresci - ten hook zamyka klase bledu maszynowo, nie na slowo.
+#
+# Wlaczenie (raz, lokalnie, per-clone):
+#   git config core.hooksPath .githooks
+#
+# Wymaga sibling checkout generatora (patrz README.md > "Supply chain"):
+#   git clone https://github.com/0n40i4/k0nsult-tools ../k0nsult-tools
+
+set -e
+
+repo_root="$(git rev-parse --show-toplevel)"
+tooling="$repo_root/../k0nsult-tools/sbom.mjs"
+
+if [ ! -f "sbom.json" ] || [ ! -f "$repo_root/sbom.json" ]; then
+  # Ten checkout nie ma sbom.json w korzeniu (np. inne repo uzywajace tego samego
+  # hooksPath przez pomylke) - nic do zrobienia.
+  exit 0
+fi
+
+if [ ! -f "$tooling" ]; then
+  echo "pre-commit: brak $tooling (potrzebny sibling checkout k0nsult-tools) - POMIJAM regen SBOM." >&2
+  echo "pre-commit: sklonuj obok tego repo: git clone https://github.com/0n40i4/k0nsult-tools ../k0nsult-tools" >&2
+  echo "pre-commit: CI i tak zweryfikuje SBOM (verify.yml) - jesli jest nieaktualny, push i tak sfailuje." >&2
+  exit 0
+fi
+
+echo "pre-commit: regeneruje sbom.json (node ../k0nsult-tools/sbom.mjs)..."
+node "$tooling" --root "$repo_root" --out "$repo_root/sbom.json"
+
+# Dolacz zregenerowany sbom.json do tego samego commita, zeby nigdy nie wpadl
+# do repo nieaktualny.
+git -C "$repo_root" add sbom.json
+
+exit 0

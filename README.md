@@ -19,5 +19,13 @@ k0nsult.cloud engine behind it is proprietary and **not** in this repository.
 `sbom.json` — CycloneDX-lite inventory (SHA-256 per file), via
 [`k0nsult-tools`](../k0nsult-tools): `node ../k0nsult-tools/sbom.mjs --root . --out sbom.json`
 
+CI (`verify.yml`) fails the build if `sbom.json` doesn't recompute to an exact
+match. To regenerate it automatically before every commit instead of
+remembering by hand, enable the shipped hook once per clone:
+
+```
+git config core.hooksPath .githooks
+```
+
 ## License
 Apache-2.0 (patent grant, Section 3). See `LICENSE` and `NOTICE`.
